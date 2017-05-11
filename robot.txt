@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /archives/ 
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+Sitemap: https://newydd.github.io/sitemap.xml
+Sitemap: https://newydd.github.io//baidusitemap.xml
