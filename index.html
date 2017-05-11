@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>null</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title">
+<meta property="og:url" content="https://newydd.github.io/index.html">
+<meta property="og:site_name">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title">
+  
+    <link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">null</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://newydd.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-UDP编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/11/UDP编程/" class="article-date">
+  <time datetime="2017-05-11T01:54:58.000Z" itemprop="datePublished">2017-05-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/11/UDP编程/">UDP编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>UDP通信简单说来就是向固定IP发送数据，而不需要必须确认对方是否存在。通信过程简单，无需握手。当然也无法判断是否接收正常。</p>
+<p>UDP编程过程：<br>基本函数</p>
+<ul>
+<li><p>建立套接字<br>socket函数：为了执行网络输入输出，一个进程必须做的第一件事就是调用socket函数获得一个文件描述符。</p>
+<p>  <code>sockfd=socket(AF_INET,SOCK_DGRAM,0)</code>第一个参数指明了协议簇，目前支持5种协议簇，最常用的有AF_INET(IPv4协议)和AF_INET6(IPv6协议)；第二个参数指明套接口类型，有三种类型可选：SOCK_STREAM(字节流套接口)、SOCK_DGRAM(数据报套接口)和SOCK_RAW(原始套接口)；如果套接口类型不是原始套接口，那么第三个参数就为0。。</p>
+</li>
+</ul>
+<ul>
+<li><p>bind函数：为套接口分配一个本地IP和协议端口，对于网际协议，协议地址是32位IPv4地址或128位IPv6地址与16位的TCP或UDP端口号的组合；如指定端口为0，调用bind时内核将选择一个临时端口，如果指定一个通配IP地址，则要等到建立连接后内核才选择一个本地IP地址。<br><code>int bind(int sockfd, const struct sockaddr * server, socklen_t addrlen);</code></p>
+<p>  第一个参数是socket函数返回的套接口描述字；第二和第第三个参数分别是一个指向特定于协议的地址结构的指针和该地址结构的长度。</p>
+</li>
+</ul>
+<ul>
+<li>recvfrom函数：UDP使用recvfrom()函数接收数据，他类似于标准的read()，但是在recvfrom()函数中要指明目的地址<br>  <code>ssize_t recvfrom(int sockfd, void *buf, size_t len, int flags, struct sockaddr * from, size_t *addrlen);</code><br>返回接收到数据的长度－－－成功　　　-1－－－失败　0—无数据<br>  第一个参数套接字，第二个接受数组，第三个参数缓冲区长度，flags参数是传输控制标志，一般为0。from表示sockaddr结构地址，最后一个为sockaddr 结构大小</li>
+</ul>
+<ul>
+<li>sendto函数：UDP使用sendto()函数发送数据，他类似于标准的write()，但是在sendto()函数中要指明目的地址。<br><code>ssize_t sendto(int sockfd, const void *buf, size_t len, int flags, const struct sockaddr * to, int addrlen);</code><br>返回发送数据的长度－－－成功　　　-1－－－失败　</li>
+</ul>
+<p>　　前三个参数等同于函数read()的前三个参数，flags参数是传输控制标志。参数to指明数据将发往的协议地址，他的大小由addrlen参数来指定。</p>
+<ul>
+<li>select函数：<br><code>int select(int maxfdp,fd_set *readfds,fd_set *writefds,fd_set *errorfds,struct timeval *timeout);</code></li>
+</ul>
+<ol>
+<li>int maxfdp是一个整数值，指集合中所有文件描述符的范围，即所有文件描述符的最大值加1</li>
+<li>fd_set *readfds是指向fd_set结构的指针，这个集合中应该包括读取文件描述符</li>
+<li>fd_set *writefds是指向fd_set结构的指针，这个集合中应该写包括文件描述符</li>
+<li>fd_set *errorfds同上面两个参数的意图，用来监视文件错误异常</li>
+<li>struct timeval* timeout是select的超时时间，这个参数至关重要.超时时间内为阻塞，超时则调出，返回0值。错误返回-1；</li>
+</ol>
+<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><pre><code>#include&lt;stdio.h&gt;  
+#include&lt;string.h&gt;  
+#include&lt;unistd.h&gt;  
+#include&lt;sys/types.h&gt;  
+#include&lt;sys/socket.h&gt;  
+#include&lt;stdlib.h&gt;  
+#include&lt;netinet/in.h&gt;  
+#include&lt;arpa/inet.h&gt;  
+
+#define PORT 1234  
+#define MAXDATASIZE 100  
+
+main()  
+{  
+    int sockfd;  
+    struct sockaddr_in server;    
+    socklen_t addrlen;  
+    int num;  
+    char buf[MAXDATASIZE];  
+
+    if((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) == -1)   
+    {  
+        perror(&quot;Creatingsocket failed.&quot;);  
+        exit(1);  
+    }  
+
+    bzero(&amp;server,sizeof(server));  
+    server.sin_family=AF_INET;  
+    server.sin_port=htons(PORT);  
+    server.sin_addr.s_addr= htonl (INADDR_ANY);  
+    if(bind(sockfd, (struct sockaddr *)&amp;server, sizeof(server)) == -1)  
+    {  
+        perror(&quot;Bind()error.&quot;);  
+        exit(1);  
+    }     
+
+    addrlen=sizeof(server);  
+    while(1)    
+    {  
+      num =recvfrom(sockfd,buf,MAXDATASIZE,0,(struct sockaddr*)&amp;server,&amp;addrlen);                                     
+
+    if (num &lt; 0)  
+    {  
+        perror(&quot;recvfrom() error\n&quot;);  
+        exit(1);  
+    }  
+
+    buf[num] = &apos;\0&apos;;  
+    printf(&quot;You got a message (%s%) from client.\nIt&apos;s ip is%s, port is %d.\n&quot;,buf,inet_ntoa(client.sin_addr),htons(client.sin_port));   
+    sendto(sockfd,&quot;Welcometo my server.\n&quot;,22,0,(struct sockaddr *)&amp;client,addrlen);  
+
+    close(sockfd);    
+} 
+</code></pre><hr>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><pre><code>#include &lt;stdio.h&gt;  
+#include &lt;stdlib.h&gt;  
+#include &lt;unistd.h&gt;  
+#include &lt;string.h&gt;  
+#include &lt;sys/types.h&gt;  
+#include &lt;sys/socket.h&gt;  
+#include &lt;netinet/in.h&gt;  
+#include &lt;netdb.h&gt;  
+
+#define    UDP_TEST_PORT        8001
+#define UDP_SERVER_IP         &quot;192.168.60.169&quot;
+
+int main(int argc, char *argv[])  
+{  
+   struct sockaddr_in addr;
+   int sockfd, len = 0;    
+   socklen_t addr_len = sizeof(struct sockaddr_in);        
+   char buffer[256];
+
+   /* 建立socket，注意必须是SOCK_DGRAM */
+   if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) &lt; 0) {
+       perror(&quot;socket&quot;);
+       exit(1);
+   }
+
+   /* 填写sockaddr_in*/
+   bzero(&amp;addr, sizeof(addr));
+   addr.sin_family = AF_INET;
+   addr.sin_port = htons(UDP_TEST_PORT);
+   addr.sin_addr.s_addr = inet_addr(UDP_SERVER_IP);
+        close(sockfd);  
+
+  buffer=&quot;hello&quot;; 
+  while(1) {
+   sendto(sockfd, buffer, len, 0, (struct sockaddr *)&amp;addr, addr_len);
+   sleep(2); /*睡眠2秒*/
+   printf(&quot;%s\n&quot;,buffer);
+   }
+
+
+}  
+</code></pre><hr>
+<p>Select<br>由于recvfrom会造成程序堵塞，故而UDP一般可配合select函数使用</p>
+<pre><code>fd_set fds;
+timeval timeout={time,0};
+int net;
+
+while（1)
+{
+    timeout.tv_sec=time;
+    timeout.tv_usec=0;
+
+    FD_ZERO(&amp;fds);        //描述符情空
+    FD_SET(sockfd,&amp;fds);//将套接字绑定描述符
+    net=0;
+    net=select(sockfd+1,&amp;fds,NULL,NULL,&amp;timeout);
+
+    if(net&lt;0)
+    {
+        exit(-1);
+    }
+    else if(net==0) 
+    {
+        printf(&quot;timeout\n&quot;);
+
+    }    
+     else
+     {    if(FD_ISSET(sockfd,&amp;fds))
+        {
+            num =recvfrom(sockfd,buf,MAXDATASIZE,0,(struct sockaddr*);    
+        } 
+    }
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://newydd.github.io/2017/05/11/UDP编程/" data-id="cj2jt8nvq00007wa0ljxlw68n" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/通信/">通信</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-机器人空间转换" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/机器人空间转换/" class="article-date">
+  <time datetime="2017-04-23T03:11:52.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/机器人空间转换/">机器人空间转换</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="rotation"><a href="#rotation" class="headerlink" title="rotation"></a><font size="6">rotation</font></h1><p><img src="http://chart.googleapis.com/chart?cht=tx&chl=\Large _{}^{A}\textrm{P}_{B} \ast  _{ }^{B}\textrm{P}=_{ }^{A}\textrm{P}" style="border:none;"> </p>
+<p><font size="4">前者表示坐标系A到B的旋转矩阵，后两个分别表示各坐标系下P点的坐标</font></p>
+<p><img src="http://i.imgur.com/KmtUu2m.png" alt=""><br><img src="http://i.imgur.com/PPFDPru.png" alt=""></p>
+<h1 id="3D-transform"><a href="#3D-transform" class="headerlink" title="3D transform"></a><font size="6">3D transform</font></h1><p><img src="http://i.imgur.com/ORyVj5L.png" alt=""></p>
+<ul>
+<li>Moving around<br>The camera observes point P in its own coordinate frame. But then the transform from the world to the camera is T. What’s the position of the point in the world coordinate? T*p</li>
+</ul>
+<ol>
+<li>reference frame changed</li>
+<li>point changed<br>relative movement  </li>
+</ol>
+<h1 id="Transform-inverse"><a href="#Transform-inverse" class="headerlink" title="Transform inverse"></a><font size="6">Transform inverse</font></h1><p><img src="http://i.imgur.com/pBAg6LF.png" alt=""><br><img src="http://i.imgur.com/BmtNqqz.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://newydd.github.io/2017/04/23/机器人空间转换/" data-id="cj2jt8nvy00027wa0p7l7qdi5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-测试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/22/测试/" class="article-date">
+  <time datetime="2017-04-22T05:38:07.000Z" itemprop="datePublished">2017-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/22/测试/">markdown一些用法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>this is a test for markdown</p>
+<p><img src="http://i.imgur.com/Ly3CR5A.png" alt=""></p>
+<p><img src="http://chart.googleapis.com/chart?cht=tx&chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" style="border:none;"></p>
+<p><img src="http://chart.googleapis.com/chart?cht=tx&chl=\Large \frac{a}{b}" style="border:none;"></p>
+<p>插入公式方法：    </p>
+<p><strong>1.利用latex在线生成公式代码</strong><br><a href="http://latex.codecogs.com/eqneditor/editor.php" target="_blank" rel="external">http://latex.codecogs.com/eqneditor/editor.php</a></p>
+<p><strong>2.利用google chart服务器生成公式</strong><br>&lt;//img src=”<a href="http://chart.googleapis.com/chart?cht=tx&amp;chl=\Large" target="_blank" rel="external">http://chart.googleapis.com/chart?cht=tx&amp;chl=\Large</a> <em>x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}”</em>  style=”border:none;”//&gt;<br>更改倾斜部分内容即可 ，双斜杠需删掉</p>
+<p>更改字体：<a href="https://jingyan.baidu.com/article/380abd0a1c856d1d90192cd9.html" target="_blank" rel="external">https://jingyan.baidu.com/article/380abd0a1c856d1d90192cd9.html</a></p>
+<p><a href="http://blog.csdn.net/testcs_dn/article/details/45719357/" target="_blank" rel="external">http://blog.csdn.net/testcs_dn/article/details/45719357/</a></p>
+<font face="黑体">我是黑体字</font>
+
+<font color="#0099ff" size="4" face="黑体">color=#0099ff size=72 face=”黑体”</font>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://newydd.github.io/2017/04/22/测试/" data-id="cj2jt8nwa00067wa0cwjvb4rj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/21/hello-world/" class="article-date">
+  <time datetime="2017-04-21T09:36:29.241Z" itemprop="datePublished">2017-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/21/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://newydd.github.io/2017/04/21/hello-world/" data-id="cj2jt8nw600057wa08tfzkjxw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通信/">通信</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/通信/" style="font-size: 10px;">通信</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/11/UDP编程/">UDP编程</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/23/机器人空间转换/">机器人空间转换</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/22/测试/">markdown一些用法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/21/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

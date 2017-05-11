@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+    
+    <entry>
+      <title><![CDATA[机器人空间转换]]></title>
+      <url>%2Fundefined%2F%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A220170423%2F</url>
+      <content type="text"><![CDATA[rotation 前者表示坐标系A到B的旋转矩阵，后两个分别表示各坐标系下P点的坐标 3D transform Moving aroundThe camera observes point P in its own coordinate frame. But then the transform from the world to the camera is T. What’s the position of the point in the world coordinate? T*p reference frame changed point changedrelative movement Transform inverse]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[markdown一些用法]]></title>
+      <url>%2Fundefined%2F%E6%B5%8B%E8%AF%9520170422%2F</url>
+      <content type="text"><![CDATA[this is a test for markdown 插入公式方法： 1.利用latex在线生成公式代码http://latex.codecogs.com/eqneditor/editor.php 2.利用google chart服务器生成公式&lt;//img src=”http://chart.googleapis.com/chart?cht=tx&amp;chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}” style=”border:none;”//&gt;更改倾斜部分内容即可 ，双斜杠需删掉 更改字体：https://jingyan.baidu.com/article/380abd0a1c856d1d90192cd9.html http://blog.csdn.net/testcs_dn/article/details/45719357/ 我是黑体字 color=#0099ff size=72 face=”黑体”]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>%2Fundefined%2Fhello-world20170421%2F</url>
+      <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    </entry>
+
+    
+  
+  
+</search>
