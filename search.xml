@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[rviz]]></title>
     <url>%2F2017%2F05%2F19%2Frviz%2F</url>
-    <content type="text"><![CDATA[学习Rviz 1.Markers: Sending Basic Shapes (C++)http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes rviz中基本的类型有visualization_msgs/Marker Marker 类型中主要有 Header //包括框架和时间戳 ns //marker的名字 id //与ns一起创建唯一的 type //发送类型 action // 通常有ADD or DELETE geometry_msgs/Pose pose geometry_msgs/Vector3 scale std_msgs/ColorRGBA color duration lifetime //持续时间，ros::Duration()意味着不会自动删除 bool frame_locked 发布话题，消息类型为marker。rivz界面中添加marker，更改话题名。 -2.Markers: Points and Lines (C++) LINE_LIST 每一个线需要两个点 ，即一对点 markers不仅提供简单的形状类型，还有点、线段、线集合等。 LINE_STRIP 为点向量，每两点相连]]></content>
+    <content type="text"><![CDATA[学习Rviz 1.Markers: Sending Basic Shapes (C++)http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes rviz中基本的类型有visualization_msgs/Marker Marker 类型中主要有 Header //包括框架和时间戳 ns //marker的名字 id //与ns一起创建唯一的 type //发送类型 action // 通常有ADD or DELETE geometry_msgs/Pose pose geometry_msgs/Vector3 scale std_msgs/ColorRGBA color duration lifetime //持续时间，ros::Duration()意味着不会自动删除 bool frame_locked 发布话题，消息类型为marker。rivz界面中添加marker，更改话题名。 -2.Markers: Points and Lines (C++) LINE_LIST 每一个线需要两个点 ，即一对点 markers不仅提供简单的形状类型，还有点、线段、线集合等。 LINE_STRIP 为点向量，每两点相连 -3.Markers: Interactive Markers rviz中基本的类型有 visualization_msgs/InteractiveMarker 如果你想创造一个节点提供一系列的交互markers，你需要构成一个InteractiveMarkerServer对象。rviz做为客户端。 ####交互marker需了解http://docs.ros.org/api/visualization_msgs/html/index-msg.htmlvisualization_msgs/InteractiveMarker, visualization_msgs/InteractiveMarkerControl and visualization_msgs/InteractiveMarkerFeedback]]></content>
       <tags>
         <tag>ROS</tag>
       </tags>
