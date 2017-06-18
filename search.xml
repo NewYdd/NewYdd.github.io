@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C++ primer 学习笔记（一）]]></title>
+    <url>%2F2017%2F06%2F18%2FC-primer-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[C++ primer 学习笔记（一） charpter1 查看main函数的返回值： linux $ echo $? windows $ echo %ERRORLEVEL% 标准输出输入对象：cout / cin / cerr / clog 显示警告和错误信息 endl：操纵符，结束当前行，并将与设备关联的缓冲区内容刷入设备中。 从键盘输入文件结束符 windows下 ctrl+Z ，unix下Ctrl+D 使用文件重定向 $ addItems //addTtems为可执行文件charpter2 算术类型： char 8位short 16位int 16/32位long 32位long long 64位float 32位doubke 64位 类型转换： 给无符号类型赋值时，超出范围，则值为总数取模后的余数。例如unsigned char c= -1 ， c=-1%256=255 含有无符号类型的表达式 ： 无符号+有符号 ，会将有符号强行转成无符号，方式同上。若结果为负，也会转成无符号 全局变量和局部变量同名，可使用：：来使用全局变量的值 引用即别名，为已经存在的对象所起的另一个名字 int &amp;a=b；类型必须完全匹配，比如示例中b必须为int型 指针： 定义时 int p = &amp;a；类型必须相同，不能定义指向引用的指针。 空指针 int p=0；if（p）表示如果p不是空指针则 常量指针` int *const p，表示指针指向的地址无法改变，指针本身是常量 const int *p ,表示指针指向的对象是常量` 类型别名： typedef xx xx * using xx=xx 类型别名]]></content>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[test]]></title>
+    <url>%2F2017%2F06%2F18%2Ftest%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[rviz]]></title>
     <url>%2F2017%2F05%2F19%2Frviz%2F</url>
-    <content type="text"><![CDATA[学习Rviz 1.Markers: Sending Basic Shapes (C++)http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes rviz中基本的类型有visualization_msgs/Marker Marker 类型中主要有 Header //包括框架和时间戳 ns //marker的名字 id //与ns一起创建唯一的 type //发送类型 action // 通常有ADD or DELETE geometry_msgs/Pose pose geometry_msgs/Vector3 scale std_msgs/ColorRGBA color duration lifetime //持续时间，ros::Duration()意味着不会自动删除 bool frame_locked 发布话题，消息类型为marker。rivz界面中添加marker，更改话题名。 -2.Markers: Points and Lines (C++) LINE_LIST 每一个线需要两个点 ，即一对点 markers不仅提供简单的形状类型，还有点、线段、线集合等。 LINE_STRIP 为点向量，每两点相连 -3.Markers: Interactive Markers rviz中基本的类型有 visualization_msgs/InteractiveMarker 如果你想创造一个节点提供一系列的交互markers，你需要构成一个InteractiveMarkerServer对象。rviz做为客户端。 ####交互marker需了解http://docs.ros.org/api/visualization_msgs/html/index-msg.htmlvisualization_msgs/InteractiveMarker, visualization_msgs/InteractiveMarkerControl and visualization_msgs/InteractiveMarkerFeedback]]></content>
+    <content type="text"><![CDATA[学习Rviz 1.Markers: Sending Basic Shapes (C++)http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes rviz中基本的类型有visualization_msgs/Marker Marker 类型中主要有 Header //包括框架和时间戳 ns //marker的名字 id //与ns一起创建唯一的 type //发送类型 action // 通常有ADD or DELETE geometry_msgs/Pose pose geometry_msgs/Vector3 scale std_msgs/ColorRGBA color duration lifetime //持续时间，ros::Duration()意味着不会自动删除 bool frame_locked 发布话题，消息类型为marker。rivz界面中添加marker，更改话题名。 -2.Markers: Points and Lines (C++) LINE_LIST 每一个线需要两个点 ，即一对点 markers不仅提供简单的形状类型，还有点、线段、线集合等。 LINE_STRIP 为点向量，每两点相连 -3.Markers: Interactive Markers rviz中基本的类型有 visualization_msgs/InteractiveMarker 如果你想创造一个节点提供一系列的交互markers，你需要构成一个InteractiveMarkerServer对象。rviz做为客户端。 ###交互marker需了解http://docs.ros.org/api/visualization_msgs/html/index-msg.htmlvisualization_msgs/InteractiveMarker, visualization_msgs/InteractiveMarkerControl and visualization_msgs/InteractiveMarkerFeedback Writing a Simple Interactive Marker Server 交互服务器编写 2.]]></content>
       <tags>
         <tag>ROS</tag>
       </tags>
