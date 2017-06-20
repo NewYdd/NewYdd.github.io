@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[C++ primer学习笔记（二）]]></title>
     <url>%2F2017%2F06%2F20%2FC-primer%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[C++ primer 学习笔记（二）=charpter 3- using namespace::name例如 using std::cin ; //引入命名空间的某个成员 using namespace std ;//引入命名空间std ####string 标准库 #include using namespace std; string 初始化 string s1(n,’c’) 将s1初始化为连续n个字符c组成 string a(“hello”) string 的基本操作 string s 输入 cin&gt;&gt;s //忽略开头的空白 直到遇到下一处空白停止 读取一行 geline(cin, s) //保留空白 ，遇到换行符停止 empty 是否为空 size 返回长度不包含’/0’s.size() = strlen(s.c_str()) **注意size返回为无符号的整数]]></content>
+    <content type="text"><![CDATA[C++ primer 学习笔记（二）=charpter 3 using namespace::name例如 using std::cin ; //引入命名空间的某个成员 using namespace std ;//引入命名空间std string 标准库 #include using namespace std; string 初始化 string s1(n,’c’) 将s1初始化为连续n个字符c组成 string a(“hello”) string 的基本操作 string s 输入 cin&gt;&gt;s //忽略开头的空白 直到遇到下一处空白停止 读取一行 geline(cin, s) //保留空白 ，遇到换行符停止 empty 是否为空 size 返回长度不包含’/0’s.size() = strlen(s.c_str()) **注意size返回为无符号的整数]]></content>
       <tags>
         <tag>C++</tag>
       </tags>
