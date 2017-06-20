@@ -19,7 +19,7 @@
   <entry>
     <title><![CDATA[C++ primer 学习笔记（一）]]></title>
     <url>%2F2017%2F06%2F18%2FC-primer-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[C++ primer 学习笔记（一） charpter1 查看main函数的返回值： linux $ echo $? windows $ echo %ERRORLEVEL% 标准输出输入对象：cout / cin / cerr / clog 显示警告和错误信息 endl：操纵符，结束当前行，并将与设备关联的缓冲区内容刷入设备中。 从键盘输入文件结束符 windows下 ctrl+Z ，unix下Ctrl+D 使用文件重定向 $ addItems //addTtems为可执行文件charpter2 算术类型： char 8位short 16位int 16/32位long 32位long long 64位float 32位doubke 64位 类型转换： 给无符号类型赋值时，超出范围，则值为总数取模后的余数。例如unsigned char c= -1 ， c=-1%256=255 含有无符号类型的表达式 ： 无符号+有符号 ，会将有符号强行转成无符号，方式同上。若结果为负，也会转成无符号 全局变量和局部变量同名，可使用：：来使用全局变量的值 引用即别名，为已经存在的对象所起的另一个名字 int &amp;a=b；类型必须完全匹配，比如示例中b必须为int型 指针： 定义时 int p = &amp;a；类型必须相同，不能定义指向引用的指针。 空指针 int p=0；if（p）表示如果p不是空指针则 常量指针` int *const p，表示指针指向的地址无法改变，指针本身是常量 const int *p ,表示指针指向的对象是常量` 类型别名： typedef xx xx * using xx=xx 类型别名]]></content>
+    <content type="text"><![CDATA[charpter1 查看main函数的返回值： linux $ echo $ ?` windows $ echo %ERRORLEVEL% ` 标准输出输入对象：cout / cin / cerr / clog 显示警告和错误信息 endl：操纵符，结束当前行，并将与设备关联的缓冲区内容刷入设备中。 从键盘输入文件结束符 windows下 ctrl+Z ，unix下Ctrl+D 使用文件重定向 $ addItems \&lt;infile outfile\&gt;//addTtems为可执行文件charpter2 算术类型： char 8位short 16位int 16/32位long 32位long long 64位float 32位doubke 64位 类型转换： 给无符号类型赋值时，超出范围，则值为总数取模后的余数。例如unsigned char c= -1 ， c=-1%256=255 含有无符号类型的表达式 ： 无符号+有符号 ，会将有符号强行转成无符号，方式同上。若结果为负，也会转成无符号 全局变量和局部变量同名，可使用：：来使用全局变量的值 引用即别名，为已经存在的对象所起的另一个名字 int &amp;a=b；类型必须完全匹配，比如示例中b必须为int型 指针： 定义时 int p = &amp;a；类型必须相同，不能定义指向引用的指针。 空指针 ` int p=0；if（p）表示如果p不是空指针则` 常量指针int *const p，表示指针指向的地址无法改变，指针本身是常量 const int *p ,表示指针指向的对象是常量` 类型别名： typedef xx xx * using xx=xx 类型别名]]></content>
       <tags>
         <tag>C++</tag>
       </tags>

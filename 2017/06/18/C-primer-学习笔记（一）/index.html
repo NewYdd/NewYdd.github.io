@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="C++ primer 学习笔记（一） charpter1     查看main函数的返回值： linux $ echo $?  windows $ echo %ERRORLEVEL%  标准输出输入对象：cout / cin / cerr / clog 显示警告和错误信息 endl：操纵符，结束当前行，并将与设备关联的缓冲区内容刷入设备中。 从键盘输入文件结束符  windows下 ctrl+Z">
+<meta name="description" content="charpter1 查看main函数的返回值： linux $ echo $ ?` windows $ echo %ERRORLEVEL% `  标准输出输入对象：cout / cin / cerr / clog 显示警告和错误信息 endl：操纵符，结束当前行，并将与设备关联的缓冲区内容刷入设备中。 从键盘输入文件结束符  windows下 ctrl+Z ，unix下Ctrl+D   使用文件重">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++ primer 学习笔记（一）">
 <meta property="og:url" content="https://newydd.github.io/2017/06/18/C-primer-学习笔记（一）/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
-<meta property="og:description" content="C++ primer 学习笔记（一） charpter1     查看main函数的返回值： linux $ echo $?  windows $ echo %ERRORLEVEL%  标准输出输入对象：cout / cin / cerr / clog 显示警告和错误信息 endl：操纵符，结束当前行，并将与设备关联的缓冲区内容刷入设备中。 从键盘输入文件结束符  windows下 ctrl+Z">
-<meta property="og:updated_time" content="2017-06-18T12:15:32.271Z">
+<meta property="og:description" content="charpter1 查看main函数的返回值： linux $ echo $ ?` windows $ echo %ERRORLEVEL% `  标准输出输入对象：cout / cin / cerr / clog 显示警告和错误信息 endl：操纵符，结束当前行，并将与设备关联的缓冲区内容刷入设备中。 从键盘输入文件结束符  windows下 ctrl+Z ，unix下Ctrl+D   使用文件重">
+<meta property="og:updated_time" content="2017-06-20T23:40:08.726Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ primer 学习笔记（一）">
-<meta name="twitter:description" content="C++ primer 学习笔记（一） charpter1     查看main函数的返回值： linux $ echo $?  windows $ echo %ERRORLEVEL%  标准输出输入对象：cout / cin / cerr / clog 显示警告和错误信息 endl：操纵符，结束当前行，并将与设备关联的缓冲区内容刷入设备中。 从键盘输入文件结束符  windows下 ctrl+Z">
+<meta name="twitter:description" content="charpter1 查看main函数的返回值： linux $ echo $ ?` windows $ echo %ERRORLEVEL% `  标准输出输入对象：cout / cin / cerr / clog 显示警告和错误信息 endl：操纵符，结束当前行，并将与设备关联的缓冲区内容刷入设备中。 从键盘输入文件结束符  windows下 ctrl+Z ，unix下Ctrl+D   使用文件重">
 
 
 
@@ -392,18 +392,13 @@
       
 
       
-        <p>C++ primer 学习笔记（一）</p>
-<p>charpter1</p>
-<ul>
-<li></li>
-</ul>
-<ul>
-<li>查看main函数的返回值： linux $ echo $?  <pre><code>windows $ echo %ERRORLEVEL%
+        <h2 id="charpter1"><a href="#charpter1" class="headerlink" title="charpter1"></a>charpter1</h2><ul>
+<li>查看main函数的返回值： <code>linux $ echo $ ?</code><pre><code>` windows $ echo %ERRORLEVEL% `
 </code></pre></li>
 <li>标准输出输入对象：cout / cin / cerr / clog 显示警告和错误信息</li>
 <li>endl：操纵符，结束当前行，并将与设备关联的缓冲区内容刷入设备中。</li>
 <li>从键盘输入文件结束符  windows下 ctrl+Z ，unix下Ctrl+D  </li>
-<li>使用文件重定向  $ addItems <infile outfile=""> //addTtems为可执行文件<br>charpter2</infile></li>
+<li>使用文件重定向 <code>$ addItems \&lt;infile outfile\&gt;</code>//addTtems为可执行文件<br>charpter2</li>
 </ul>
 <ul>
 <li></li>
@@ -419,8 +414,8 @@
 <li>含有无符号类型的表达式 ： 无符号+有符号 ，会将有符号强行转成无符号，方式同上。若结果为负，也会转成无符号  </li>
 <li>全局变量和局部变量同名，可使用：：来使用全局变量的值</li>
 <li>引用即别名，为已经存在的对象所起的另一个名字 int &amp;a=b；类型必须完全匹配，比如示例中b必须为int型</li>
-<li>指针： 定义时 int <em>p = &amp;a；类型必须相同，不能定义指向引用的指针。 空指针  int </em>p=0；<code>if（p）表示如果p不是空指针则</code></li>
-<li>常量指针` int *const p，表示指针指向的地址无法改变，指针本身是常量  <pre><code>const int *p ,表示指针指向的对象是常量`  
+<li>指针： 定义时 int <em>p = &amp;a；类型必须相同，不能定义指向引用的指针。 空指针 ` int </em>p=0<code>；</code>if（p）表示如果p不是空指针则`</li>
+<li>常量指针<code>int *const p</code>，表示指针指向的地址无法改变，指针本身是常量  <pre><code>const int *p ,表示指针指向的对象是常量`  
 </code></pre></li>
 <li>类型别名： typedef xx  xx   <pre><code>* using xx=xx      
 </code></pre></li>
@@ -550,8 +545,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -624,6 +628,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#charpter1"><span class="nav-number">1.</span> <span class="nav-text">charpter1</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
