@@ -101,7 +101,7 @@
 <meta property="og:url" content="https://newydd.github.io/2017/06/21/ROS-导航学习-tf/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
 <meta property="og:description" content="头文件 tf,geometry_msgs Broadcasting a Transform（广播变换）利用tf::TransformBroadcaster   sendTransform进行坐标变换的广播 tf::StampedTransform::StampedTransform(    const  tf::Transform &amp;amp;     input,   const ros::Tim">
-<meta property="og:updated_time" content="2017-06-21T13:37:29.435Z">
+<meta property="og:updated_time" content="2017-06-21T13:38:13.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ROS 导航学习 tf">
 <meta name="twitter:description" content="头文件 tf,geometry_msgs Broadcasting a Transform（广播变换）利用tf::TransformBroadcaster   sendTransform进行坐标变换的广播 tf::StampedTransform::StampedTransform(    const  tf::Transform &amp;amp;     input,   const ros::Tim">
@@ -449,8 +449,14 @@ geometry_msgs::PointStamped &amp;     stamped_out
 </li>
 </ul>
 <p>目标坐标系，输入和输出</p>
-<p>void Transformer::lookupTransform(const std::string &amp;     target_frame,<br>                  const std::string &amp;     source_frame,<br>                  const ros::Time &amp;     time,<br>                      StampedTransform &amp;     transform<br>)<br>Get the transform between two frames by frame ID.</p>
-<pre><code>#include &lt;ros/ros.h&gt;  
+<pre><code>void Transformer::lookupTransform(const std::string &amp;     target_frame,
+              const std::string &amp;     source_frame,
+              const ros::Time &amp;     time,
+                  StampedTransform &amp;     transform     
+)    
+//Get the transform between two frames by frame ID.
+
+#include &lt;ros/ros.h&gt;  
 #include &lt;geometry_msgs/PointStamped.h&gt;  
 #include &lt;tf/transform_listener.h&gt;  
 
