@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="charpter 3 using namespace::name例如 using std::cin ;  //引入命名空间的某个成员  using namespace std ;//引入命名空间std string 标准库   #include    using namespace std;   string 初始化  string s1(n,’c’) 将s1初始化为连续n个字符c组成  stri">
+<meta name="description" content="charpter 3 using namespace::name例如 using std::cin ;  //引入命名空间的某个成员  using namespace std ;//引入命名空间std string 标准库   #include string   using namespace std;   string 初始化  string s1(n,’c’) 将s1初始化为连续n个字符c组成">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++ primer学习笔记（二）">
 <meta property="og:url" content="https://newydd.github.io/2017/06/20/C-primer学习笔记（二）/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
-<meta property="og:description" content="charpter 3 using namespace::name例如 using std::cin ;  //引入命名空间的某个成员  using namespace std ;//引入命名空间std string 标准库   #include    using namespace std;   string 初始化  string s1(n,’c’) 将s1初始化为连续n个字符c组成  stri">
-<meta property="og:updated_time" content="2017-06-20T23:44:01.547Z">
+<meta property="og:description" content="charpter 3 using namespace::name例如 using std::cin ;  //引入命名空间的某个成员  using namespace std ;//引入命名空间std string 标准库   #include string   using namespace std;   string 初始化  string s1(n,’c’) 将s1初始化为连续n个字符c组成">
+<meta property="og:updated_time" content="2017-06-21T01:47:59.788Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ primer学习笔记（二）">
-<meta name="twitter:description" content="charpter 3 using namespace::name例如 using std::cin ;  //引入命名空间的某个成员  using namespace std ;//引入命名空间std string 标准库   #include    using namespace std;   string 初始化  string s1(n,’c’) 将s1初始化为连续n个字符c组成  stri">
+<meta name="twitter:description" content="charpter 3 using namespace::name例如 using std::cin ;  //引入命名空间的某个成员  using namespace std ;//引入命名空间std string 标准库   #include string   using namespace std;   string 初始化  string s1(n,’c’) 将s1初始化为连续n个字符c组成">
 
 
 
@@ -393,26 +393,34 @@
 
       
         <h2 id="charpter-3"><a href="#charpter-3" class="headerlink" title="charpter 3"></a>charpter 3</h2><ul>
-<li>using namespace::name<br>例如 <code>using std::cin ;</code>  //引入命名空间的某个成员<br>  <code>using namespace std ;</code>//引入命名空间std <h4 id="string-标准库"><a href="#string-标准库" class="headerlink" title="string 标准库"></a>string 标准库</h4>   #include <string\><br>   using namespace std;</string\></li>
+<li>using namespace::name<br>例如 <code>using std::cin ;</code>  //引入命名空间的某个成员<br>  <code>using namespace std ;</code>//引入命名空间std <h4 id="string-标准库"><a href="#string-标准库" class="headerlink" title="string 标准库"></a>string 标准库</h4>   #include string<br>   using namespace std;</li>
 </ul>
 <ul>
 <li><h5 id="string-初始化"><a href="#string-初始化" class="headerlink" title="string 初始化"></a>string 初始化</h5>  string s1(n,’c’) 将s1初始化为连续n个字符c组成<br>  string a(“hello”)</li>
-<li><h5 id="string-的基本操作-string-s"><a href="#string-的基本操作-string-s" class="headerlink" title="string 的基本操作 string s"></a>string 的基本操作 <code>string s</code></h5>  输入 <code>cin&gt;&gt;s</code>  //忽略开头的空白 直到遇到下一处空白停止<br>  读取一行 <code>geline(cin, s)</code> //保留空白 ，遇到换行符停止<br>  empty 是否为空<br>  size 返回长度不包含’/0’<code>s.size()</code> = <code>strlen(s.c_str())</code><br>  **注意size返回为无符号的整数</li>
+<li><h5 id="string-的基本操作-string-s"><a href="#string-的基本操作-string-s" class="headerlink" title="string 的基本操作 string s;"></a>string 的基本操作 <code>string s;</code></h5>  输入 <code>cin&gt;&gt;s</code>  //忽略开头的空白 直到遇到下一处空白停止<br>  读取一行 <code>geline(cin, s)</code> //保留空白 ，遇到换行符停止<br>  empty 是否为空<br>  size 返回长度不包含’/0’<code>s.size()</code> = <code>strlen(s.c_str())</code><br>  **注意size返回为无符号的整数</li>
 <li><h5 id="string-加法"><a href="#string-加法" class="headerlink" title="string 加法"></a>string 加法</h5>两侧必须有一个string 例如<code>&quot;hello&quot;+&quot;dd&quot;</code>不合法</li>
 <li><h5 id="string-字符的比较"><a href="#string-字符的比较" class="headerlink" title="string 字符的比较"></a>string 字符的比较</h5>isalnum() isalpha() 头文件cctype或者ctype.h <a href="http://book.2cto.com/201309/32066.html" target="_blank" rel="external">http://book.2cto.com/201309/32066.html</a></li>
-<li><h5 id="对string-对象每个字符操作"><a href="#对string-对象每个字符操作" class="headerlink" title="对string 对象每个字符操作"></a>对string 对象每个字符操作</h5>   for（declaration ： expression）<pre><code>statement  
-</code></pre></li>
+<li><h5 id="对string-对象每个字符操作"><a href="#对string-对象每个字符操作" class="headerlink" title="对string 对象每个字符操作"></a>对string 对象每个字符操作</h5>   for（declaration ： expression）<br>   statement  </li>
 </ul>
 <hr>
 <pre><code>for（auto c : str）
 cout&lt;&lt;c&lt;&lt;endl; 
 </code></pre><h4 id="vector-标准库"><a href="#vector-标准库" class="headerlink" title="vector 标准库"></a>vector 标准库</h4><ul>
-<li>头文件：include \<vector\><br><code>vector&lt;T&gt; v1</code><br><code>vector&lt;T&gt; v2(n,val)</code></vector\></li>
+<li>头文件：include vector<br><code>vector&lt;T&gt; v1</code><br><code>vector&lt;T&gt; v2(n,val)</code></li>
 <li>列表初始化vector 对象<br><code>vector&lt;T&gt; v3{&quot;d&quot;,&quot;b&quot;,&quot;c&quot;}</code> 生成了三个对象<br>**花括号表示列表初始化，圆括号表示构造对象  </li>
 <li>#####vector中添加元素<br>push_back()在尾部添加元素  </li>
 <li>其他操作与string类型相似</li>
 </ul>
-<p>###注：size 操作的到的类型为size_type<br><code>vector&lt;int&gt;::size_type lenth</code><br><code>string::size_type lenth</code>  </p>
+<p>###注：size 操作得到的类型为size_type<br><code>vector&lt;int&gt;::size_type lenth</code><br><code>string::size_type lenth</code>    </p>
+<h4 id="迭代器使用"><a href="#迭代器使用" class="headerlink" title="迭代器使用"></a>迭代器使用</h4><ul>
+<li>迭代器运算符 <blockquote>
+<p>== !=  表示迭代器是否指向同一个元素，或者同一个迭代器是否只指向尾部</p>
+<ul>
+<li>iter 返回对改元素的引用<br>iter-&gt;mem == (*iter).mem<br>++iter –iter<br>如果为const_iterator 只能读，不能写<br>例如<code>string::const_iterator it</code><br>   <code>vector&lt;int&gt;::const_iteratot it</code><br>begin()，end() 根据对象确定是否为常量<br>cbegin(),cend() 返回为常值迭代器<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4>size_t 类型 用来表示数组下标 足够大足以存任意对象的大小<br>头文件cstddef // stddef.h  <code>unsigned int</code><br>size_t 类型表示C 中任何对象所能达到的最大长度。它是无符号整数， 因为负数在这里没有意义。它的目的是提供一种可移植的方法来声明与系统中可寻址的内存区域一致的长度。size_t 用做sizeof 操作符的返回值类型，同时也是很多函数的参数类型，包括malloc 和strlen。在声明诸如字符数或者数组索引这样的长度变量时用size_t 是好的做法。它经常用于循环计数器、数组索引，有时候还用在指针算术运算上。<br>数组的遍历 也可使用<code>for（auto i : scores）;</code><br>数组begin 和 end ，<code>int *beg = begin(ia);</code></li>
+</ul>
+</blockquote>
+</li>
+</ul>
 
       
     </div>
@@ -455,18 +463,14 @@ cout&lt;&lt;c&lt;&lt;endl;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/20/test/" rel="next" title="C++ primer学习笔记（二）">
-                <i class="fa fa-chevron-left"></i> C++ primer学习笔记（二）
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/18/C-primer-学习笔记（一）/" rel="prev" title="C++ primer 学习笔记（一）">
-                C++ primer 学习笔记（一） <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/20/test/" rel="prev" title="C++ primer学习笔记（二）">
+                C++ primer学习笔记（二） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -630,7 +634,7 @@ cout&lt;&lt;c&lt;&lt;endl;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#charpter-3"><span class="nav-number">1.</span> <span class="nav-text">charpter 3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#string-标准库"><span class="nav-number">1.0.1.</span> <span class="nav-text">string 标准库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#string-初始化"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">string 初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#string-的基本操作-string-s"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">string 的基本操作 string s</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#string-加法"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">string 加法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#string-字符的比较"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">string 字符的比较</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对string-对象每个字符操作"><span class="nav-number">1.0.1.5.</span> <span class="nav-text">对string 对象每个字符操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vector-标准库"><span class="nav-number">1.0.2.</span> <span class="nav-text">vector 标准库</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#charpter-3"><span class="nav-number">1.</span> <span class="nav-text">charpter 3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#string-标准库"><span class="nav-number">1.0.1.</span> <span class="nav-text">string 标准库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#string-初始化"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">string 初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#string-的基本操作-string-s"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">string 的基本操作 string s;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#string-加法"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">string 加法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#string-字符的比较"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">string 字符的比较</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对string-对象每个字符操作"><span class="nav-number">1.0.1.5.</span> <span class="nav-text">对string 对象每个字符操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vector-标准库"><span class="nav-number">1.0.2.</span> <span class="nav-text">vector 标准库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代器使用"><span class="nav-number">1.0.3.</span> <span class="nav-text">迭代器使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组"><span class="nav-number">1.0.4.</span> <span class="nav-text">数组</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -2,16 +2,16 @@
 <search>
   <entry>
     <title><![CDATA[C++ primer学习笔记（二）]]></title>
-    <url>%2F2017%2F06%2F20%2FC-primer%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[charpter 3 using namespace::name例如 using std::cin ; //引入命名空间的某个成员 using namespace std ;//引入命名空间std string 标准库 #include using namespace std; string 初始化 string s1(n,’c’) 将s1初始化为连续n个字符c组成 string a(“hello”) string 的基本操作 string s 输入 cin&gt;&gt;s //忽略开头的空白 直到遇到下一处空白停止 读取一行 geline(cin, s) //保留空白 ，遇到换行符停止 empty 是否为空 size 返回长度不包含’/0’s.size() = strlen(s.c_str()) **注意size返回为无符号的整数 string 加法两侧必须有一个string 例如&quot;hello&quot;+&quot;dd&quot;不合法 string 字符的比较isalnum() isalpha() 头文件cctype或者ctype.h http://book.2cto.com/201309/32066.html 对string 对象每个字符操作 for（declaration ： expression）statement for（auto c : str） cout&lt;&lt;c&lt;&lt;endl; vector 标准库 头文件：include \vector&lt;T&gt; v1vector&lt;T&gt; v2(n,val) 列表初始化vector 对象vector&lt;T&gt; v3{&quot;d&quot;,&quot;b&quot;,&quot;c&quot;} 生成了三个对象**花括号表示列表初始化，圆括号表示构造对象 #####vector中添加元素push_back()在尾部添加元素 其他操作与string类型相似 ###注：size 操作的到的类型为size_typevector&lt;int&gt;::size_type lenthstring::size_type lenth]]></content>
+    <url>%2F2017%2F06%2F20%2Ftest%2F</url>
+    <content type="text"><![CDATA[charpter 3 using namespace::name例如 using std::cin ; //引入命名空间的某个成员 using namespace std ;//引入命名空间std string 标准库 #include using namespace std; string 初始化 string s1(n,’c’) 将s1初始化为连续n个字符c组成 string a(“hello”) string 的基本操作 string s 输入 cin&gt;&gt;s //忽略开头的空白 直到遇到下一处空白停止 读取一行 geline(cin, s) //保留空白 ，遇到换行符停止 empty 是否为空 size 返回长度不包含’/0’s.size() = strlen(s.c_str()) **注意size返回为无符号的整数 string 加法 两侧必须有一个string 例如&quot;hello&quot;+&quot;dd&quot;不合法 string 字符的比较 isalnum() isalpha()]]></content>
       <tags>
         <tag>C++</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[C++ primer学习笔记（二）]]></title>
-    <url>%2F2017%2F06%2F20%2Ftest%2F</url>
-    <content type="text"><![CDATA[charpter 3 using namespace::name例如 using std::cin ; //引入命名空间的某个成员 using namespace std ;//引入命名空间std string 标准库 #include using namespace std; string 初始化 string s1(n,’c’) 将s1初始化为连续n个字符c组成 string a(“hello”) string 的基本操作 string s 输入 cin&gt;&gt;s //忽略开头的空白 直到遇到下一处空白停止 读取一行 geline(cin, s) //保留空白 ，遇到换行符停止 empty 是否为空 size 返回长度不包含’/0’s.size() = strlen(s.c_str()) **注意size返回为无符号的整数 string 加法 两侧必须有一个string 例如&quot;hello&quot;+&quot;dd&quot;不合法 string 字符的比较 isalnum() isalpha()]]></content>
+    <url>%2F2017%2F06%2F20%2FC-primer%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[charpter 3 using namespace::name例如 using std::cin ; //引入命名空间的某个成员 using namespace std ;//引入命名空间std string 标准库 #include string using namespace std; string 初始化 string s1(n,’c’) 将s1初始化为连续n个字符c组成 string a(“hello”) string 的基本操作 string s; 输入 cin&gt;&gt;s //忽略开头的空白 直到遇到下一处空白停止 读取一行 geline(cin, s) //保留空白 ，遇到换行符停止 empty 是否为空 size 返回长度不包含’/0’s.size() = strlen(s.c_str()) **注意size返回为无符号的整数 string 加法两侧必须有一个string 例如&quot;hello&quot;+&quot;dd&quot;不合法 string 字符的比较isalnum() isalpha() 头文件cctype或者ctype.h http://book.2cto.com/201309/32066.html 对string 对象每个字符操作 for（declaration ： expression） statement for（auto c : str） cout&lt;&lt;c&lt;&lt;endl; vector 标准库 头文件：include vectorvector&lt;T&gt; v1vector&lt;T&gt; v2(n,val) 列表初始化vector 对象vector&lt;T&gt; v3{&quot;d&quot;,&quot;b&quot;,&quot;c&quot;} 生成了三个对象**花括号表示列表初始化，圆括号表示构造对象 #####vector中添加元素push_back()在尾部添加元素 其他操作与string类型相似 ###注：size 操作得到的类型为size_typevector&lt;int&gt;::size_type lenthstring::size_type lenth 迭代器使用 迭代器运算符 == != 表示迭代器是否指向同一个元素，或者同一个迭代器是否只指向尾部 iter 返回对改元素的引用iter-&gt;mem == (*iter).mem++iter –iter如果为const_iterator 只能读，不能写例如string::const_iterator it vector&lt;int&gt;::const_iteratot itbegin()，end() 根据对象确定是否为常量cbegin(),cend() 返回为常值迭代器数组size_t 类型 用来表示数组下标 足够大足以存任意对象的大小头文件cstddef // stddef.h unsigned intsize_t 类型表示C 中任何对象所能达到的最大长度。它是无符号整数， 因为负数在这里没有意义。它的目的是提供一种可移植的方法来声明与系统中可寻址的内存区域一致的长度。size_t 用做sizeof 操作符的返回值类型，同时也是很多函数的参数类型，包括malloc 和strlen。在声明诸如字符数或者数组索引这样的长度变量时用size_t 是好的做法。它经常用于循环计数器、数组索引，有时候还用在指针算术运算上。数组的遍历 也可使用for（auto i : scores）;数组begin 和 end ，int *beg = begin(ia);]]></content>
       <tags>
         <tag>C++</tag>
       </tags>
