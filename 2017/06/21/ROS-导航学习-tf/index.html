@@ -101,7 +101,7 @@
 <meta property="og:url" content="https://newydd.github.io/2017/06/21/ROS-导航学习-tf/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
 <meta property="og:description" content="头文件 tf,geometry_msgs Broadcasting a Transform（广播变换）利用tf::TransformBroadcaster   sendTransform进行坐标变换的广播 tf::StampedTransform::StampedTransform(    const  tf::Transform &amp;amp;     input,   const ros::Tim">
-<meta property="og:updated_time" content="2017-06-21T13:38:13.928Z">
+<meta property="og:updated_time" content="2017-06-22T09:44:48.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ROS 导航学习 tf">
 <meta name="twitter:description" content="头文件 tf,geometry_msgs Broadcasting a Transform（广播变换）利用tf::TransformBroadcaster   sendTransform进行坐标变换的广播 tf::StampedTransform::StampedTransform(    const  tf::Transform &amp;amp;     input,   const ros::Tim">
@@ -401,7 +401,7 @@ const ros::Time &amp;     timestamp,
 </blockquote>
 </li>
 </ul>
-<p>广播内容 :<br>第1个参数, 变换公式，Transform包括位姿pose和平移transform<br>第2个参数，需要给转换关系携带一个时间戳，标记为ros::Time::now()；<br>第3个参数，需要传递parent节点的名字； //想要变成的坐标系 目标<br>第4个参数，传递的是child节点的名字；  </p>
+<p>广播内容 :<br>第1个参数, 变换公式，Transform包括位姿pose和平移transform<br>第2个参数，需要给转换关系携带一个时间戳，标记为ros::Time::now()；<br>第3个参数，需要传递parent节点的名字； //想要变成的坐标系<br>第4个参数，传递的是child节点的名字；<br>由于tf假设所有的转换都是从parent到child的（考虑原点变换），当收到child坐标系的坐标，完成转化变成parent坐标系的坐标</p>
 <ul>
 <li><h4 id="Transform-的构造方式："><a href="#Transform-的构造方式：" class="headerlink" title="Transform 的构造方式："></a>Transform 的构造方式：</h4></li>
 <li><blockquote>
@@ -441,22 +441,17 @@ r.sleep();
 </li>
 <li><p>利用</p>
 <blockquote>
-<p>void TransformListener::transformPoint(const std::string &amp;    target_frame,</p>
+<p>void TransformListener::transformPoint(const std::string &amp;<br>target_frame,</p>
 <pre><code>const geometry_msgs::PointStamped &amp;     stamped_in,
 geometry_msgs::PointStamped &amp;     stamped_out     
 </code></pre><p>)    </p>
 </blockquote>
 </li>
 </ul>
-<p>目标坐标系，输入和输出</p>
-<pre><code>void Transformer::lookupTransform(const std::string &amp;     target_frame,
-              const std::string &amp;     source_frame,
-              const ros::Time &amp;     time,
-                  StampedTransform &amp;     transform     
-)    
-//Get the transform between two frames by frame ID.
-
-#include &lt;ros/ros.h&gt;  
+<blockquote>
+<p>void Transformer::lookupTransform(<br> const std::string &amp;     target_frame,<br>    const std::string &amp;     source_frame,<br>    const ros::Time &amp;     time,<br>    StampedTransform &amp;     transform<br>    )<br>    //Get the transform between two frames by frame ID.</p>
+</blockquote>
+<pre><code>#include &lt;ros/ros.h&gt;  
 #include &lt;geometry_msgs/PointStamped.h&gt;  
 #include &lt;tf/transform_listener.h&gt;  
 
