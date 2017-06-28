@@ -101,7 +101,7 @@
 <meta property="og:url" content="https://newydd.github.io/2017/06/25/C-primer-学习笔记（三）/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
 <meta property="og:description" content="charpter 4 逻辑与&amp;amp;&amp;amp; 只有左侧运算对象为真才会对右侧对象求值   逻辑或|| 只有左侧运算对象为假才会对右侧对象求值 ++i先加再执行，i++先执行再加 ，建议++i，运算等级最高 成员访问运算符 ptr-&amp;gt;mem // (*ptr)-&amp;gt;mem   条件运算符   cond ? expr1 : expre2 如果cond成立，expr1，否则expr2">
-<meta property="og:updated_time" content="2017-06-27T13:55:58.642Z">
+<meta property="og:updated_time" content="2017-06-28T02:51:22.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++primer 学习笔记（三）">
 <meta name="twitter:description" content="charpter 4 逻辑与&amp;amp;&amp;amp; 只有左侧运算对象为真才会对右侧对象求值   逻辑或|| 只有左侧运算对象为假才会对右侧对象求值 ++i先加再执行，i++先执行再加 ，建议++i，运算等级最高 成员访问运算符 ptr-&amp;gt;mem // (*ptr)-&amp;gt;mem   条件运算符   cond ? expr1 : expre2 如果cond成立，expr1，否则expr2">
@@ -399,7 +399,7 @@
 <li>成员访问运算符 <code>ptr-&gt;mem</code> // <code>(*ptr)-&gt;mem</code>  </li>
 <li>条件运算符   <code>cond ? expr1 : expre2</code> 如果cond成立，expr1，否则expr2  </li>
 </ul>
-<p>####位运算<br>位运算作用于整数类型的对象 ， 运算符包括   </p>
+<h4 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h4><p>位运算作用于整数类型的对象 ， 运算符包括   </p>
 <blockquote>
 <p>~ 位求反<br>&lt;&lt; 左移  </p>
 <blockquote>
@@ -411,7 +411,7 @@
 <ul>
 <li>移位运算 左移&lt;&lt;在右侧插入值为0，右移若为无符号则在左插入0，否则插入符号位。  </li>
 <li>位异或 若只有1个1则为1 ，否则为0</li>
-<li>置1 |= ，清0 &amp;=~<br>####sizeof运算符   </li>
+<li>置1 |= ，清0 &amp;=~<h4 id="sizeof运算符"><a href="#sizeof运算符" class="headerlink" title="sizeof运算符"></a>sizeof运算符</h4></li>
 <li>返回一条表达式或一个类型名字所占的字节数，所得size_t类型，sizeof(type)  sizeof expr</li>
 <li>与strlen()比较strlen()计算字符数组的字符数，以”\0”为结束判断，不计算为’\0’的数组元素。而sizeof计算数据（包括数组、变量、类型、结构体等）所占内存空间，用字节数表示  </li>
 <li>指针与静态数组的sizeof操作，指针均可看为变量类型的一种。所有指针变量的sizeof 操作结果均为4</li>
@@ -423,8 +423,7 @@
 </blockquote>
 </li>
 </ul>
-<p>####类型转换  </p>
-<ul>
+<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><ul>
 <li>无符号+有符号运算  如果无符号类型不小于带符号的，那转为无符号的，如unsigned int 与 int  </li>
 <li>如无符号类型小于带符号的，结果依赖于机器</li>
 </ul>
@@ -469,6 +468,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/28/C-primer-学习笔记（四）/" rel="next" title="C++ primer 学习笔记（四）">
+                <i class="fa fa-chevron-left"></i> C++ primer 学习笔记（四）
+              </a>
             
           </div>
 
@@ -573,7 +576,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -641,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#charpter-4"><span class="nav-number">1.</span> <span class="nav-text">charpter 4</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#charpter-4"><span class="nav-number">1.</span> <span class="nav-text">charpter 4</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#位运算"><span class="nav-number">1.0.1.</span> <span class="nav-text">位运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sizeof运算符"><span class="nav-number">1.0.2.</span> <span class="nav-text">sizeof运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型转换"><span class="nav-number">1.0.3.</span> <span class="nav-text">类型转换</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
