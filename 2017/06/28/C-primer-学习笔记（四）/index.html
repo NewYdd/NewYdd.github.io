@@ -101,7 +101,7 @@
 <meta property="og:url" content="https://newydd.github.io/2017/06/28/C-primer-学习笔记（四）/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
 <meta property="og:description" content="条件语句与函数基础charpter 5 case 标签必须是整型常量表达式 while 当不确定要迭代多少次时比较合适     continue 结束当次循环，continue后语句不执行 try – catch 异常处理 try{   执行程序；抛出异常     } catch（异常）{处理异常}   抛出异常 throw 异常类型 表达式   throw runtime_error(“inpu">
-<meta property="og:updated_time" content="2017-06-30T12:26:41.822Z">
+<meta property="og:updated_time" content="2017-07-01T01:06:26.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ primer 学习笔记（四）">
 <meta name="twitter:description" content="条件语句与函数基础charpter 5 case 标签必须是整型常量表达式 while 当不确定要迭代多少次时比较合适     continue 结束当次循环，continue后语句不执行 try – catch 异常处理 try{   执行程序；抛出异常     } catch（异常）{处理异常}   抛出异常 throw 异常类型 表达式   throw runtime_error(“inpu">
@@ -418,8 +418,18 @@
 <li>函数返回类型不能是数组类型或者函数类型，可以是数组的指针或引用，或者是指向数组或函数的指针</li>
 <li>局部静态对象 static 类型的变量  只初始化一次，直到main结束销毁，局部静态变量默认初始化为0；</li>
 <li>传引用调用：形参是引用类型时，改变实参的值，实际是实参的别称。传值调用，形参和实参相互独立。</li>
-<li>建议使用引用类型的形参来替代指针<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><blockquote>
-<p>使用引用 （当对象数据较大时，避免使用拷贝，例如string类型）<br>如果函数无需改变引用形参的值，声明为const 引用<br>使用引用形参，提供了一种返回多个对象的方法。</p>
+<li><p>建议使用引用类型的形参来替代指针</p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><blockquote>
+<p>使用引用 （当对象数据较大时，避免使用拷贝，例如string类型）<br>如果函数无需改变引用形参的值，声明为const 引用<br>使用引用形参，提供了一种返回多个对象的方法。<br>使用引用形参时，尽量使用常量引用</p>
+</blockquote>
+</li>
+<li><p>数组形参  </p>
+</li>
+<li>不允许拷贝数组以及使用数组时通常将其转换成指针。无法使用值传递，故而传递的是数组首元素的指针。即const int *,若需要改值，去掉const  </li>
+<li>由于传递的指针无法得知数组长度。一般使用<code>(const int *a, size_t size)</code> </li>
+<li>数组引用形参 举例 <code>int (&amp;arr)[10]</code> 给这种形参赋值必须严格满足  </li>
+<li>多维数组形参 举例 <code>int (*matrix)[10]  &lt;==&gt; int matrix[][10]</code> 表示指向含有10个整数的数组的指针 <blockquote>
+<p>(int matrix[][10],int rowsize) //10列 rowsize行</p>
 </blockquote>
 </li>
 </ul>
