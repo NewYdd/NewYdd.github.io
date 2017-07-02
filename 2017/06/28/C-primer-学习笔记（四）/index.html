@@ -101,7 +101,7 @@
 <meta property="og:url" content="https://newydd.github.io/2017/06/28/C-primer-学习笔记（四）/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
 <meta property="og:description" content="条件语句与函数基础charpter 5 case 标签必须是整型常量表达式 while 当不确定要迭代多少次时比较合适     continue 结束当次循环，continue后语句不执行 try – catch 异常处理 try{   执行程序；抛出异常     } catch（异常）{处理异常}   抛出异常 throw 异常类型 表达式   throw runtime_error(“inpu">
-<meta property="og:updated_time" content="2017-07-02T02:24:53.756Z">
+<meta property="og:updated_time" content="2017-07-02T02:26:46.152Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ primer 学习笔记（四）">
 <meta name="twitter:description" content="条件语句与函数基础charpter 5 case 标签必须是整型常量表达式 while 当不确定要迭代多少次时比较合适     continue 结束当次循环，continue后语句不执行 try – catch 异常处理 try{   执行程序；抛出异常     } catch（异常）{处理异常}   抛出异常 throw 异常类型 表达式   throw runtime_error(“inpu">
@@ -452,12 +452,10 @@ return sum;
 <h4 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h4><p>函数 返回值和返回引用是不同的<br>函数返回值时会产生一个临时变量作为函数返回值的副本，而返回引用时不会产生值的副本。  </p>
 <ul>
 <li>返回引用函数的参数必须是引用，实际上返回的还是引用参数  </li>
-<li><p>返回引用可以作为左值，即可赋值<br>  string &amp;shortString(string &amp;data1,string &amp;data2)<br>  {  </p>
-<pre><code>return data1.size()&gt;data2.size()? data1:data2;  
-</code></pre><p>  }  </p>
+<li><p>返回引用可以作为左值，即可赋值<br>  string &amp;shortString(string &amp;data1,string &amp;data2)<br>  {  return data1.size()&gt;data2.size()? data1:data2;<br>  }  </p>
 <p>  int main(int argc,char **argv)<br>  {   </p>
 <pre><code>string a=&quot;boy&quot;;
-   string b=&quot;girl&quot;;
+string b=&quot;girl&quot;;
 shortString(a,b)=&quot;hello&quot;;
 cout&lt;&lt;a&lt;&lt;endl;
 cout&lt;&lt;b&lt;&lt;endl;
