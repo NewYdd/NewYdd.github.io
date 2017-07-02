@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="少年维特的小窝">
 <meta property="og:description" content="条件语句与函数基础charpter 5 case 标签必须是整型常量表达式 while 当不确定要迭代多少次时比较合适     continue 结束当次循环，continue后语句不执行 try – catch 异常处理 try{   执行程序；抛出异常     } catch（异常）{处理异常}   抛出异常 throw 异常类型 表达式   throw runtime_error(“inpu">
 <meta property="og:image" content="http://i.imgur.com/0laU0HX.jpg">
-<meta property="og:updated_time" content="2017-07-02T11:14:04.617Z">
+<meta property="og:updated_time" content="2017-07-02T11:17:39.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ primer 学习笔记（四）">
 <meta name="twitter:description" content="条件语句与函数基础charpter 5 case 标签必须是整型常量表达式 while 当不确定要迭代多少次时比较合适     continue 结束当次循环，continue后语句不执行 try – catch 异常处理 try{   执行程序；抛出异常     } catch（异常）{处理异常}   抛出异常 throw 异常类型 表达式   throw runtime_error(“inpu">
@@ -479,11 +479,11 @@ return sum;
 </li>
 <li>函数指针形参 ，将函数指针作为形参，  <blockquote>
 <p>例如  void useBigger(const string &amp;s1,const string &amp;s2,bool <em>pf(const string &amp;,const string &amp;));使用时 useBigger(s1,s2,lenthCompare)<br>使用typedef 以及 decltype 简化表达式。<br>typedef bool (</em>Func)(const string &amp;,const string &amp;)<br>typedef decltype(lenthCompare) *Func<br>void useBigger(const string &amp;s1,const string &amp;s2,Func)</p>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p> double add(double x,double y)<br>{<br>return x+y;<br>}</p>
 </blockquote>
 </li>
 </ul>
-<blockquote>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><blockquote>
+<p> double add(double x,double y)<br>  {<br>  return x+y;<br>  }</p>
 <p> double difference(double x,double y)<br>  {<br>  return x-y;<br>  }</p>
 <p>double calculator(double (<strong>Fun)(double, double), double x,double y)<br>  {<br>  return (</strong>Fun)(x,y);<br>  }  </p>
 <p> int main(void)<br>  {<br>  double x=2;<br>  double y=4;<br>  double result1=calculator(add,x,y);<br>  double result2=calculator(difference,x,y);//调用者只需面对唯一的接口：calculator  </p>
