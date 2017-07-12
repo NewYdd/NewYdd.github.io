@@ -1,101 +1,707 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[C++ primer 学习笔记（五）]]></title>
-    <url>%2F2017%2F07%2F02%2FC-primer-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[charpter7 类定义抽象数据类型 类中this一般指这个对象，类型为指向类 类型非常量 的常量指针，即 Struct_name *const // 常量指针，指向对象为非常量 如何转为指向常量的指针，在类成员函数参数列表之后添加const即可，该函数为常量成员函数，无法修改对象的内容。 常量对象，常量对象的引用或指针只能调用常量成员函数。 定义一个返回this对象的函数 函数的返回类型必须为 对象的引用 如 Sales_data &amp;，返回语句为return *this 构造函数 当需要默认构造函数时，一般写为 类名（）=default 构造函数初始值列表 类名（形参) ： 类成员（参数名），类成员（参数名）...）{}示例 ` Sales_data(const std::string &amp;s,unsigned n,double p) : bookNo(s),units_sold(n),revenue(p*n){ } 友元 类允许其他类或者函数访问它的非公有成员，方法是零其他类或者函数成为他的友元。在类中添加友元函数声明即可，friend 函数名 友元函数的声明与类本身放置在同一个头文件中类的其他特性 内联函数 ： 当函数在类内部定义时，默认为内联函数。在外部定义时需添加inline 友元类： 某个类访问其他类中的私有成员，必须声明为友元类。如A访问B，则在B中声明friend class A，友元关系不具有传递性 友元函数： 某个类的成员函数访问其他类中的私有成员，必须声明为友元函数。如类A中func1访问类B，则在B中声明friend A::func1. 友元声明的函数或类必须在使用之前显示声明 再探构造函数 构造函数的初始值必不可少： 如果成员是const，或者引用必须通过构造函数初始值列表为成员提供处置。 默认构造函数 类名 对象名，注意，不需要括号。类的静态成员 关键词static ，静态数据成员的类型可以是常量，引用，指针。静态成员函数不能声明为const以及包含this指针 使用静态成员 类名::静态成员或者与普通一样使用]]></content>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[C++ primer 学习笔记（四）]]></title>
-    <url>%2F2017%2F06%2F28%2FC-primer-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[条件语句与函数基础charpter 5 case 标签必须是整型常量表达式 while 当不确定要迭代多少次时比较合适 continue 结束当次循环，continue后语句不执行 try – catch 异常处理 try{ 执行程序；抛出异常 } catch（异常）{处理异常} 抛出异常 throw 异常类型 表达式 throw runtime_error(“input must be int “) //这边抛出异常 类型为runtime_error 对象初始化为input must be int 常见异常 range_error 生成的结果超出值域范围invalid_argument 无效参数… charpter 6形参 函数返回类型不能是数组类型或者函数类型，可以是数组的指针或引用，或者是指向数组或函数的指针 局部静态对象 static 类型的变量 只初始化一次，直到main结束销毁，局部静态变量默认初始化为0； 传引用调用：形参是引用类型时，改变实参的值，实际是实参的别称。传值调用，形参和实参相互独立。 建议使用引用类型的形参来替代指针 注意： 使用引用 （当对象数据较大时，避免使用拷贝，例如string类型）如果函数无需改变引用形参的值，声明为const 引用使用引用形参，提供了一种返回多个对象的方法。使用引用形参时，尽量使用常量引用 数组形参 不允许拷贝数组以及使用数组时通常将其转换成指针。无法使用值传递，故而传递的是数组首元素的指针。即const int *,若需要改值，去掉const 由于传递的指针无法得知数组长度。一般使用(const int *a, size_t size) 数组引用形参 举例 int (&amp;arr)[10] 给这种形参赋值必须严格满足 多维数组形参 举例 int (*matrix)[10] &lt;==&gt; int matrix[][10] 表示指向含有10个整数的数组的指针 (int matrix[][10],int rowsize) //10列 rowsize行 main(int argc, char **argv) 其中argc表示参数个数，使用参数时从argv[1]开始，argv[0]保存程序名，故而argc至少为1 可变形参的函数 无法提前预知应该向函数传递几个实参 。若实参类型相同，可使用initializer_list标准库类型；类型不同，需编写可变参数模板。 initializer_list list //该类型对象元素均为常量值示例 int sum(initializer_list list) { int sum=0; for(auto beg=list.begin();beg !=list.end();++beg) sum += *beg; return sum; } sum({1,2,3}) ### 参数序列放在花括号内 返回类型及return语句 void函数可使用return语句，程序执行到return时退出。 不要返回局部对象的引用或指针 tip 函数 返回值和返回引用是不同的 函数返回值时会产生一个临时变量作为函数返回值的副本，而返回引用时不会产生值的副本。 返回引用函数return 不能返回临时变量或局部变量，返回参数可以 返回引用可以作为左值，即可赋值 string &amp;shortString(string &amp;data1,string &amp;data2) { return data1.size()&gt;data2.size()? data1:data2; } int main(int argc,char **argv) { string a=”boy”; string b=”girl”; shortString(a,b)=”hello”; cout&lt;&lt;a&lt;&lt;endl; cout&lt;&lt;b&lt;&lt;endl; return 0; } 返回数组指针 ？ 形式为Type (*function(参数))[dimension] ,如 int(*func(int i))[10] //表示调用的数组大小为10函数重载 重载函数，形参数量和形参类型必须有所不同特殊用途语言特性 内联函数： 可避免函数调用的开销，适用于优化规模较小，流程直接，频繁调用的函数。用法 ： inline + 函数 调试帮助 assert 与NDEBUG assert(expt)//表达式为假输出信息，并终止程序，为真则不处理函数指针 函数指针指向的是函数而不是对象 bool (pf)(const string &amp;s1,const string &amp;s2) //pf指向一个函数，该函数参数是两个常字符串的引用，返回值为boolbool pf(const string &amp;s1,const string &amp;s2) //声明一个名为pf的函数，返回值为bool * 使用函数指针,直接将函数名赋给pf，例如 pf=lenthCompare 或者直接使用boo1 b1=pf(&quot;hello&quot;,&quot;compare&quot;); 函数指针形参 ，将函数指针作为形参， 例如 void useBigger(const string &amp;s1,const string &amp;s2,bool pf(const string &amp;,const string &amp;));使用时 useBigger(s1,s2,lenthCompare)使用typedef 以及 decltype 简化表达式。typedef bool (Func)(const string &amp;,const string &amp;)typedef decltype(lenthCompare) *Funcvoid useBigger(const string &amp;s1,const string &amp;s2,Func) 附录 double add(double x,double y) { return x+y; } double difference(double x,double y) { return x-y; } double calculator(double (Fun)(double, double), double x,double y) { return (Fun)(x,y); } int main(void) { double x=2; double y=4; double result1=calculator(add,x,y); double result2=calculator(difference,x,y);//调用者只需面对唯一的接口：calculator system(“pause”); return 0; }]]></content>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[C++primer 学习笔记（三）]]></title>
-    <url>%2F2017%2F06%2F25%2FC-primer-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[charpter 4 逻辑与&amp;&amp; 只有左侧运算对象为真才会对右侧对象求值 逻辑或|| 只有左侧运算对象为假才会对右侧对象求值 ++i先加再执行，i++先执行再加 ，建议++i，运算等级最高 成员访问运算符 ptr-&gt;mem // (*ptr)-&gt;mem 条件运算符 cond ? expr1 : expre2 如果cond成立，expr1，否则expr2 位运算位运算作用于整数类型的对象 ， 运算符包括 ~ 位求反&lt;&lt; 左移 右移&amp; 位与^ 位异或| 异或 移位运算 左移&lt;&lt;在右侧插入值为0，右移若为无符号则在左插入0，否则插入符号位。 位异或 若只有1个1则为1 ，否则为0 置1 |= ，清0 &amp;=~sizeof运算符 返回一条表达式或一个类型名字所占的字节数，所得size_t类型，sizeof(type) sizeof expr 与strlen()比较strlen()计算字符数组的字符数，以”\0”为结束判断，不计算为’\0’的数组元素。而sizeof计算数据（包括数组、变量、类型、结构体等）所占内存空间，用字节数表示 指针与静态数组的sizeof操作，指针均可看为变量类型的一种。所有指针变量的sizeof 操作结果均为4 对于静态数组，sizeof可直接计算数组大小 注意：数组做型参时，数组名称当作指针使用！！ sizeof(s)等于string类的大小，sizeof(s.c_str())得到的是与字符串长度。 求数组元素的个数,通常有下面两种写法： int c1 = sizeof( a1 ) / sizeof( char ); // 总长度/单个元素的长度int c2 = sizeof( a1 ) / sizeof( a1[0] ); // 总长度/第一个元素的长度http://www.cnblogs.com/chengxin1982/archive/2009/01/13/1374575.html 类型转换 无符号+有符号运算 如果无符号类型不小于带符号的，那转为无符号的，如unsigned int 与 int 如无符号类型小于带符号的，结果依赖于机器]]></content>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[ROS 导航学习 tf]]></title>
-    <url>%2F2017%2F06%2F21%2FROS-%E5%AF%BC%E8%88%AA%E5%AD%A6%E4%B9%A0-tf%2F</url>
-    <content type="text"><![CDATA[头文件 tf,geometry_msgs Broadcasting a Transform（广播变换）利用tf::TransformBroadcaster sendTransform进行坐标变换的广播 tf::StampedTransform::StampedTransform( const tf::Transform &amp; input, const ros::Time &amp; timestamp, const std::string &amp; frame_id, const std::string &amp; child_frame_id ) 广播内容 :第1个参数, 变换公式，Transform包括位姿pose和平移transform第2个参数，需要给转换关系携带一个时间戳，标记为ros::Time::now()；第3个参数，需要传递parent节点的名字； //想要变成的坐标系第4个参数，传递的是child节点的名字；由于tf假设所有的转换都是从parent到child的（考虑原点变换），当收到child坐标系的坐标，完成转化变成parent坐标系的坐标 Transform 的构造方式： tf::Transform::Transform(const Quaternion &amp; q, //四元素 const Vector3 &amp; c = Vector3(tfScalar(0), tfScalar(0), tfScalar(0)) ) tf::Transform::Transform(const Matrix3x3 &amp; b, //旋转矩阵 const Vector3 &amp; c = Vector3(tfScalar(0), tfScalar(0),tfScalar(0)) ) tf::Transform::Transform(const Transform &amp; othe//r)拷贝 #include &lt;ros/ros.h&gt; #include &lt;tf/transform_broadcaster.h&gt; int main(int argc, char** argv){ ros::init(argc, argv, &quot;robot_tf_publisher&quot;); ros::NodeHandle n; ros::Rate r(100); tf::TransformBroadcaster broadcaster; while(n.ok()){ broadcaster.sendTransform( tf::StampedTransform( tf::Transform(tf::Quaternion(0, 0, 0, 1), tf::Vector3(0.1, 0.0, 0.2)), ros::Time::now(),&quot;base_link&quot;, &quot;base_laser&quot;)); r.sleep(); } } Using a Transform（调用变换） tf::TransformListener 该对象会自动订阅ROS中的tf消息，并且管理所有的变换关系数据。 回调函数void transformPoint(const tf::TransformListener&amp; listener){ }PointStamped 类包含Point 以及Stamp (frame_id 和 时间戳) 利用 void TransformListener::transformPoint(const std::string &amp;target_frame, const geometry_msgs::PointStamped &amp; stamped_in, geometry_msgs::PointStamped &amp; stamped_out ) void Transformer::lookupTransform( const std::string &amp; target_frame, const std::string &amp; source_frame, const ros::Time &amp; time, StampedTransform &amp; transform ) //Get the transform between two frames by frame ID. #include &lt;ros/ros.h&gt; #include &lt;geometry_msgs/PointStamped.h&gt; #include &lt;tf/transform_listener.h&gt; void transformPoint(const tf::TransformListener&amp; listener){ geometry_msgs::PointStamped laser_point; laser_point.header.frame_id = &quot;base_laser&quot;; laser_point.header.stamp = ros::Time(); &lt;strong&gt;//just an arbitrary point in space&lt;/strong&gt; laser_point.point.x = 1.0; laser_point.point.y = 0.2; laser_point.point.z = 0.0; } int main(int argc, char** argv){ ros::init(argc, argv, &quot;robot_tf_listener&quot;); ros::NodeHandle n; tf::TransformListener listener(ros::Duration(10)); //we&apos;ll transform a point once every second ros::Timer timer = n.createTimer(ros::Duration(1.0), boost::bind(&amp;transformPoint, boost::ref(listener))); ros::spin(); }]]></content>
-      <tags>
-        <tag>ROS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[C++ primer学习笔记（二）]]></title>
-    <url>%2F2017%2F06%2F20%2FC-primer%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[charpter 3 using namespace::name例如 using std::cin ; //引入命名空间的某个成员 using namespace std ;//引入命名空间std string 标准库 #include string using namespace std; string 初始化 string s1(n,’c’) 将s1初始化为连续n个字符c组成 string a(“hello”) string 的基本操作 string s; 输入 cin&gt;&gt;s //忽略开头的空白 直到遇到下一处空白停止 读取一行 geline(cin, s) //保留空白 ，遇到换行符停止 empty 是否为空 size 返回长度不包含’/0’s.size() = strlen(s.c_str()) **注意size返回为无符号的整数 string 加法两侧必须有一个string 例如&quot;hello&quot;+&quot;dd&quot;不合法 string 字符的比较isalnum() isalpha() 头文件cctype或者ctype.h http://book.2cto.com/201309/32066.html 对string 对象每个字符操作 for（declaration ： expression） statement for（auto c : str） cout&lt;&lt;c&lt;&lt;endl; vector 标准库 头文件：include vectorvector&lt;T&gt; v1vector&lt;T&gt; v2(n,val) 列表初始化vector 对象vector&lt;T&gt; v3{&quot;d&quot;,&quot;b&quot;,&quot;c&quot;} 生成了三个对象**花括号表示列表初始化，圆括号表示构造对象 #####vector中添加元素push_back()在尾部添加元素 其他操作与string类型相似 ###注：size 操作得到的类型为size_typevector&lt;int&gt;::size_type lenthstring::size_type lenth 迭代器使用 迭代器运算符 == != 表示迭代器是否指向同一个元素，或者同一个迭代器是否只指向尾部 iter 返回对改元素的引用iter-&gt;mem == (*iter).mem++iter –iter如果为const_iterator 只能读，不能写例如string::const_iterator it vector&lt;int&gt;::const_iteratot itbegin()，end() 根据对象确定是否为常量cbegin(),cend() 返回为常值迭代器 数组 size_t 类型 用来表示数组下标 足够大足以存任意对象的大小 头文件cstddef // stddef.h unsigned intsize_t 类型表示C 中任何对象所能达到的最大长度。它是无符号整数， 因为负数在这里没有意义。它的目的是提供一种可移植的方法来声明与系统中可寻址的内存区域一致的长度。size_t 用做sizeof 操作符的返回值类型，同时也是很多函数的参数类型，包括malloc 和strlen。在声明诸如字符数或者数组索引这样的长度变量时用size_t 是好的做法。它经常用于循环计数器、数组索引，有时候还用在指针算术运算上。数组的遍历 也可使用for（auto i : scores）;数组begin 和 end ，int *beg = begin(ia); 注意：使用迭代器过程中不能使用push_back]]></content>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[C++ primer学习笔记（二）]]></title>
-    <url>%2F2017%2F06%2F20%2Ftest%2F</url>
-    <content type="text"><![CDATA[charpter 3 using namespace::name例如 using std::cin ; //引入命名空间的某个成员 using namespace std ;//引入命名空间std string 标准库 #include using namespace std; string 初始化 string s1(n,’c’) 将s1初始化为连续n个字符c组成 string a(“hello”) string 的基本操作 string s 输入 cin&gt;&gt;s //忽略开头的空白 直到遇到下一处空白停止 读取一行 geline(cin, s) //保留空白 ，遇到换行符停止 empty 是否为空 size 返回长度不包含’/0’s.size() = strlen(s.c_str()) **注意size返回为无符号的整数 string 加法 两侧必须有一个string 例如&quot;hello&quot;+&quot;dd&quot;不合法 string 字符的比较 isalnum() isalpha()]]></content>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[C++ primer 学习笔记（一）]]></title>
-    <url>%2F2017%2F06%2F18%2FC-primer-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[charpter1 查看main函数的返回值： linux $ echo $ ?` windows $ echo %ERRORLEVEL% ` 标准输出输入对象：cout / cin / cerr / clog 显示警告和错误信息 endl：操纵符，结束当前行，并将与设备关联的缓冲区内容刷入设备中。 从键盘输入文件结束符 windows下 ctrl+Z ，unix下Ctrl+D 使用文件重定向 $ addItems \&lt;infile outfile\&gt;//addTtems为可执行文件charpter2 算术类型： char 8位short 16位int 16/32位long 32位long long 64位float 32位doubke 64位 类型转换： 给无符号类型赋值时，超出范围，则值为总数取模后的余数。例如unsigned char c= -1 ， c=-1%256=255 含有无符号类型的表达式 ： 无符号+有符号 ，会将有符号强行转成无符号，方式同上。若结果为负，也会转成无符号 全局变量和局部变量同名，可使用：：来使用全局变量的值 引用即别名，为已经存在的对象所起的另一个名字 int &amp;a=b；类型必须完全匹配，比如示例中b必须为int型 指针： 定义时 int p = &amp;a；类型必须相同，不能定义指向引用的指针。 空指针 ` int p=0；if（p）表示如果p不是空指针则` 常量指针int *const p，表示指针指向的地址无法改变，指针本身是常量 const int *p ,表示指针指向的对象是常量` 类型别名： typedef xx xx * using xx=xx 类型别名]]></content>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[rviz]]></title>
-    <url>%2F2017%2F05%2F19%2Frviz%2F</url>
-    <content type="text"><![CDATA[学习Rviz 1.Markers: Sending Basic Shapes (C++)http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes rviz中基本的类型有visualization_msgs/Marker Marker 类型中主要有 Header //包括框架和时间戳 ns //marker的名字 id //与ns一起创建唯一的 type //发送类型 action // 通常有ADD or DELETE geometry_msgs/Pose pose geometry_msgs/Vector3 scale std_msgs/ColorRGBA color duration lifetime //持续时间，ros::Duration()意味着不会自动删除 bool frame_locked 发布话题，消息类型为marker。rivz界面中添加marker，更改话题名。 -2.Markers: Points and Lines (C++) LINE_LIST 每一个线需要两个点 ，即一对点 markers不仅提供简单的形状类型，还有点、线段、线集合等。 LINE_STRIP 为点向量，每两点相连 -3.Markers: Interactive Markers rviz中基本的类型有 visualization_msgs/InteractiveMarker 如果你想创造一个节点提供一系列的交互markers，你需要构成一个InteractiveMarkerServer对象。rviz做为客户端。 ###交互marker需了解http://docs.ros.org/api/visualization_msgs/html/index-msg.htmlvisualization_msgs/InteractiveMarker, visualization_msgs/InteractiveMarkerControl and visualization_msgs/InteractiveMarkerFeedback Writing a Simple Interactive Marker Server 交互服务器编写 2.]]></content>
-      <tags>
-        <tag>ROS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[marry you]]></title>
-    <url>%2F2017%2F05%2F13%2Fmarry-you%2F</url>
-    <content type="text"><![CDATA[BRUNO MARS - MARRY YOU|it’s a beautiful night we’re looking for something | dumb to do———- D Ehey| baby i think i wanna marry | you———- G Dis it the look in your eyes or is it | this dancing juice———- D Ewho | cares baby’ i think i wanna marry| you———- G D|well i know this little chapel on the boulevard———- Dwe can | go whoa whoa———- Eno one| will no whoa———- Goh |come on girl———- Dwho cares if we’re trashedgot a pocket full of cash we can blow whoa whoashots of patrol whoa whoaand guitar girldon’t say no no no no nojust say yeah yeah yeah yeah yeahand we’ll go go go go goif you’re ready’ like i’m readycos it’s a beautiful nigt we’re looking for something dumb to dohey baby i think i wanna marry youis it the look in your eyes or is it this dancing juicewho cares baby’ i think i wanna marry youohi’ll go get the ringlet the choir bell sing like ooh ooh oohso what you wanna do ooh oohlets just run girlif we wake up and you want to break upthat’s cool ooh oohno i won’t blame you ooh oohit was fun girldon’t say no no no no nojust say yeah yeah yeah yeah yeahand we’ll go go go go goif you’re ready’ like i’m readycos it’s a beautiful nigt we’re looking for something dumb to dohey baby i think i wanna marry youis it the look in your eyes or is it this dancing juicewho cares baby’ i think i wanna marry youjust say i do ooh ooh oohtell me right now babytell me right now baby’ babyjust say i do ooh ooh oohtell me right now babytell me right now baby’ babyohit’s a beautiful nigt we’re looking for something dumb to dohey baby i think i wanna marry youis it the look in your eyes or is it this dancing juicewho cares baby’ i think i wanna marry you]]></content>
-      <tags>
-        <tag>吉他</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[UDP编程]]></title>
-    <url>%2F2017%2F05%2F11%2FUDP%E7%BC%96%E7%A8%8B%2F</url>
-    <content type="text"><![CDATA[UDP通信简单说来就是向固定IP发送数据，而不需要必须确认对方是否存在。通信过程简单，无需握手。当然也无法判断是否接收正常。 UDP编程过程：基本函数 建立套接字socket函数：为了执行网络输入输出，一个进程必须做的第一件事就是调用socket函数获得一个文件描述符。 sockfd=socket(AF_INET,SOCK_DGRAM,0)第一个参数指明了协议簇，目前支持5种协议簇，最常用的有AF_INET(IPv4协议)和AF_INET6(IPv6协议)；第二个参数指明套接口类型，有三种类型可选：SOCK_STREAM(字节流套接口)、SOCK_DGRAM(数据报套接口)和SOCK_RAW(原始套接口)；如果套接口类型不是原始套接口，那么第三个参数就为0。。 bind函数：为套接口分配一个本地IP和协议端口，对于网际协议，协议地址是32位IPv4地址或128位IPv6地址与16位的TCP或UDP端口号的组合；如指定端口为0，调用bind时内核将选择一个临时端口，如果指定一个通配IP地址，则要等到建立连接后内核才选择一个本地IP地址。int bind(int sockfd, const struct sockaddr * server, socklen_t addrlen); 第一个参数是socket函数返回的套接口描述字；第二和第第三个参数分别是一个指向特定于协议的地址结构的指针和该地址结构的长度。 recvfrom函数：UDP使用recvfrom()函数接收数据，他类似于标准的read()，但是在recvfrom()函数中要指明目的地址 ssize_t recvfrom(int sockfd, void *buf, size_t len, int flags, struct sockaddr * from, size_t *addrlen);返回接收到数据的长度－－－成功 -1－－－失败 0—无数据 第一个参数套接字，第二个接受数组，第三个参数缓冲区长度，flags参数是传输控制标志，一般为0。from表示sockaddr结构地址，最后一个为sockaddr 结构大小 sendto函数：UDP使用sendto()函数发送数据，他类似于标准的write()，但是在sendto()函数中要指明目的地址。ssize_t sendto(int sockfd, const void *buf, size_t len, int flags, const struct sockaddr * to, int addrlen);返回发送数据的长度－－－成功 -1－－－失败 前三个参数等同于函数read()的前三个参数，flags参数是传输控制标志。参数to指明数据将发往的协议地址，他的大小由addrlen参数来指定。 select函数：int select(int maxfdp,fd_set *readfds,fd_set *writefds,fd_set *errorfds,struct timeval *timeout); int maxfdp是一个整数值，指集合中所有文件描述符的范围，即所有文件描述符的最大值加1 fd_set *readfds是指向fd_set结构的指针，这个集合中应该包括读取文件描述符 fd_set *writefds是指向fd_set结构的指针，这个集合中应该写包括文件描述符 fd_set *errorfds同上面两个参数的意图，用来监视文件错误异常 struct timeval* timeout是select的超时时间，这个参数至关重要.超时时间内为阻塞，超时则调出，返回0值。错误返回-1； 服务端#include&lt;stdio.h&gt; #include&lt;string.h&gt; #include&lt;unistd.h&gt; #include&lt;sys/types.h&gt; #include&lt;sys/socket.h&gt; #include&lt;stdlib.h&gt; #include&lt;netinet/in.h&gt; #include&lt;arpa/inet.h&gt; #define PORT 1234 #define MAXDATASIZE 100 main() { int sockfd; struct sockaddr_in server; socklen_t addrlen; int num; char buf[MAXDATASIZE]; if((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) == -1) { perror(&quot;Creatingsocket failed.&quot;); exit(1); } bzero(&amp;server,sizeof(server)); server.sin_family=AF_INET; server.sin_port=htons(PORT); server.sin_addr.s_addr= htonl (INADDR_ANY); if(bind(sockfd, (struct sockaddr *)&amp;server, sizeof(server)) == -1) { perror(&quot;Bind()error.&quot;); exit(1); } addrlen=sizeof(server); while(1) { num =recvfrom(sockfd,buf,MAXDATASIZE,0,(struct sockaddr*)&amp;server,&amp;addrlen); if (num &lt; 0) { perror(&quot;recvfrom() error\n&quot;); exit(1); } buf[num] = &apos;\0&apos;; printf(&quot;You got a message (%s%) from client.\nIt&apos;s ip is%s, port is %d.\n&quot;,buf,inet_ntoa(client.sin_addr),htons(client.sin_port)); sendto(sockfd,&quot;Welcometo my server.\n&quot;,22,0,(struct sockaddr *)&amp;client,addrlen); close(sockfd); } 客户端#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;unistd.h&gt; #include &lt;string.h&gt; #include &lt;sys/types.h&gt; #include &lt;sys/socket.h&gt; #include &lt;netinet/in.h&gt; #include &lt;netdb.h&gt; #define UDP_TEST_PORT 8001 #define UDP_SERVER_IP &quot;192.168.60.169&quot; int main(int argc, char *argv[]) { struct sockaddr_in addr; int sockfd, len = 0; socklen_t addr_len = sizeof(struct sockaddr_in); char buffer[256]; /* 建立socket，注意必须是SOCK_DGRAM */ if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) &lt; 0) { perror(&quot;socket&quot;); exit(1); } /* 填写sockaddr_in*/ bzero(&amp;addr, sizeof(addr)); addr.sin_family = AF_INET; addr.sin_port = htons(UDP_TEST_PORT); addr.sin_addr.s_addr = inet_addr(UDP_SERVER_IP); close(sockfd); buffer=&quot;hello&quot;; while(1) { sendto(sockfd, buffer, len, 0, (struct sockaddr *)&amp;addr, addr_len); sleep(2); /*睡眠2秒*/ printf(&quot;%s\n&quot;,buffer); } } Select由于recvfrom会造成程序堵塞，故而UDP一般可配合select函数使用 fd_set fds; timeval timeout={time,0}; int net; while（1) { timeout.tv_sec=time; timeout.tv_usec=0; FD_ZERO(&amp;fds); //描述符情空 FD_SET(sockfd,&amp;fds);//将套接字绑定描述符 net=0; net=select(sockfd+1,&amp;fds,NULL,NULL,&amp;timeout); if(net&lt;0) { exit(-1); } else if(net==0) { printf(&quot;timeout\n&quot;); } else { if(FD_ISSET(sockfd,&amp;fds)) { num =recvfrom(sockfd,buf,MAXDATASIZE,0,(struct sockaddr*); } } }]]></content>
-      <tags>
-        <tag>通信</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[机器人空间转换]]></title>
-    <url>%2F2017%2F04%2F23%2F%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2%2F</url>
-    <content type="text"><![CDATA[rotation 前者表示坐标系A到B的旋转矩阵，后两个分别表示各坐标系下P点的坐标 3D transform Moving aroundThe camera observes point P in its own coordinate frame. But then the transform from the world to the camera is T. What’s the position of the point in the world coordinate? T*p reference frame changed point changedrelative movement Transform inverse]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[markdown一些用法]]></title>
-    <url>%2F2017%2F04%2F22%2F%E6%B5%8B%E8%AF%95%2F</url>
-    <content type="text"><![CDATA[this is a test for markdown 插入公式方法： 1.利用latex在线生成公式代码http://latex.codecogs.com/eqneditor/editor.php 2.利用google chart服务器生成公式&lt;//img src=”http://chart.googleapis.com/chart?cht=tx&amp;chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}” style=”border:none;”//&gt;更改倾斜部分内容即可 ，双斜杠需删掉 更改字体：https://jingyan.baidu.com/article/380abd0a1c856d1d90192cd9.html http://blog.csdn.net/testcs_dn/article/details/45719357/ 我是黑体字 color=#0099ff size=72 face=”黑体”]]></content>
-      <tags>
-        <tag>学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F04%2F21%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-  </entry>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[C++ primer 学习笔记（五）]]></title>
+      <url>/2017/07/02/C-primer-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h2 id="charpter7-类"><a href="#charpter7-类" class="headerlink" title="charpter7 类"></a>charpter7 类</h2><h3 id="定义抽象数据类型"><a href="#定义抽象数据类型" class="headerlink" title="定义抽象数据类型"></a>定义抽象数据类型</h3><ul>
+<li>类中this一般指这个对象，类型为指向类 类型非常量 的常量指针，即 <code>Struct_name *const // 常量指针，指向对象为非常量</code>  </li>
+<li>如何转为指向常量的指针，在类成员函数参数列表之后添加const即可，该函数为常量成员函数，无法修改对象的内容。  </li>
+<li>常量对象，常量对象的引用或指针只能调用常量成员函数。</li>
+<li>定义一个返回this对象的函数 <code>函数的返回类型必须为 对象的引用 如 Sales_data &amp;，返回语句为return *this</code>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3></li>
+<li>当需要默认构造函数时，一般写为 <code>类名（）=default</code></li>
+<li>构造函数初始值列表  <code>类名（形参) ： 类成员（参数名），类成员（参数名）...）{}</code>示例 ` Sales_data(const std::string &amp;s,unsigned n,double p) : bookNo(s),units_sold(n),revenue(p*n){ } <h3 id="友元"><a href="#友元" class="headerlink" title="友元"></a>友元</h3></li>
+<li>类允许其他类或者函数访问它的非公有成员，方法是零其他类或者函数成为他的友元。在类中添加友元函数声明即可，<code>friend 函数名</code></li>
+<li>友元函数的声明与类本身放置在同一个头文件中<h3 id="类的其他特性"><a href="#类的其他特性" class="headerlink" title="类的其他特性"></a>类的其他特性</h3></li>
+<li>内联函数 ： 当函数在类内部定义时，默认为内联函数。在外部定义时需添加inline</li>
+<li>友元类： 某个类访问其他类中的私有成员，必须声明为友元类。如A访问B，则在B中声明<code>friend class A</code>，友元关系不具有传递性</li>
+<li>友元函数： 某个类的成员函数访问其他类中的私有成员，必须声明为友元函数。如类A中func1访问类B，则在B中声明<code>friend A::func1</code>.</li>
+<li>友元声明的函数或类必须在使用之前显示声明<h3 id="再探构造函数"><a href="#再探构造函数" class="headerlink" title="再探构造函数"></a>再探构造函数</h3></li>
+<li>构造函数的初始值必不可少： 如果成员是const，或者引用必须通过构造函数初始值列表为成员提供处置。</li>
+<li>默认构造函数 <code>类名 对象名</code>，注意，不需要括号。<h3 id="类的静态成员"><a href="#类的静态成员" class="headerlink" title="类的静态成员"></a>类的静态成员</h3></li>
+<li>关键词static ，静态数据成员的类型可以是常量，引用，指针。静态成员函数不能声明为const以及包含this指针</li>
+<li>使用静态成员 <code>类名::静态成员</code>或者与普通一样使用</li>
+</ul>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[C++ primer 学习笔记（四）]]></title>
+      <url>/2017/06/28/C-primer-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h1 id="条件语句与函数基础"><a href="#条件语句与函数基础" class="headerlink" title="条件语句与函数基础"></a>条件语句与函数基础</h1><h2 id="charpter-5"><a href="#charpter-5" class="headerlink" title="charpter 5"></a>charpter 5</h2><ul>
+<li>case 标签必须是整型常量表达式</li>
+<li>while 当不确定要迭代多少次时比较合适    </li>
+<li><p>continue 结束当次循环，continue后语句不执行</p>
+<h3 id="try-–-catch-异常处理"><a href="#try-–-catch-异常处理" class="headerlink" title="try – catch 异常处理"></a>try – catch 异常处理</h3><blockquote>
+<p>try{  </p>
+<pre><code>执行程序；抛出异常   
+</code></pre><p> }<br> catch（异常）{处理异常}</p>
+</blockquote>
+</li>
+<li><p>抛出异常 throw 异常类型 表达式 </p>
+<blockquote>
+<p>throw runtime_error(“input must be int “) //这边抛出异常 类型为runtime_error 对象初始化为input must be int  </p>
+</blockquote>
+</li>
+<li><p>常见异常</p>
+<blockquote>
+<p>range_error 生成的结果超出值域范围<br>invalid_argument 无效参数<br>…</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 id="charpter-6"><a href="#charpter-6" class="headerlink" title="charpter 6"></a>charpter 6</h2><h3 id="形参"><a href="#形参" class="headerlink" title="形参"></a>形参</h3><ul>
+<li>函数返回类型不能是数组类型或者函数类型，可以是数组的指针或引用，或者是指向数组或函数的指针</li>
+<li>局部静态对象 static 类型的变量  只初始化一次，直到main结束销毁，局部静态变量默认初始化为0；</li>
+<li>传引用调用：形参是引用类型时，改变实参的值，实际是实参的别称。传值调用，形参和实参相互独立。</li>
+<li><p>建议使用引用类型的形参来替代指针</p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><blockquote>
+<p>使用引用 （当对象数据较大时，避免使用拷贝，例如string类型）<br>如果函数无需改变引用形参的值，声明为const 引用<br>使用引用形参，提供了一种返回多个对象的方法。<br>使用引用形参时，尽量使用常量引用</p>
+</blockquote>
+</li>
+<li><p>数组形参  </p>
+</li>
+<li>不允许拷贝数组以及使用数组时通常将其转换成指针。无法使用值传递，故而传递的是数组首元素的指针。即const int *,若需要改值，去掉const  </li>
+<li>由于传递的指针无法得知数组长度。一般使用<code>(const int *a, size_t size)</code> </li>
+<li>数组引用形参 举例 <code>int (&amp;arr)[10]</code> 给这种形参赋值必须严格满足  </li>
+<li><p>多维数组形参 举例 <code>int (*matrix)[10]  &lt;==&gt; int matrix[][10]</code> 表示指向含有10个整数的数组的指针 </p>
+<blockquote>
+<p>(int matrix[][10],int rowsize) //10列 rowsize行</p>
+</blockquote>
+</li>
+<li><p><code>main(int argc, char **argv)</code> 其中argc表示参数个数，使用参数时从argv[1]开始，argv[0]保存程序名，故而argc至少为1</p>
+</li>
+<li><p>可变形参的函数  无法提前预知应该向函数传递几个实参 。若实参类型相同，可使用initializer_list标准库类型；类型不同，需编写可变参数模板。</p>
+<blockquote>
+<p>initializer_list<t> list //该类型对象元素均为常量值<br>示例 int sum(initializer_list<int> list)<br>  {  </int></t></p>
+<pre><code>int sum=0;  
+for(auto beg=list.begin();beg !=list.end();++beg)  
+sum += *beg;  
+return sum;  
+</code></pre><p>  }</p>
+</blockquote>
+<p>  sum({1,2,3}) ### 参数序列放在花括号内</p>
+<h3 id="返回类型及return语句"><a href="#返回类型及return语句" class="headerlink" title="返回类型及return语句"></a>返回类型及return语句</h3></li>
+<li>void函数可使用return语句，程序执行到return时退出。</li>
+<li>不要返回局部对象的引用或指针</li>
+</ul>
+<h4 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h4><ul>
+<li>函数 返回值和返回引用是不同的  </li>
+<li>函数返回值时会产生一个临时变量作为函数返回值的副本，而返回引用时不会产生值的副本。  </li>
+<li>返回引用函数return 不能返回临时变量或局部变量，返回参数可以   </li>
+<li>返回引用可以作为左值，即可赋值    <blockquote>
+<p>   string &amp;shortString(string &amp;data1,string &amp;data2)<br>  {  </p>
+<pre><code>return data1.size()&gt;data2.size()? data1:data2;  
+</code></pre><p>   }  </p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>   int main(int argc,char **argv)<br>    {<br>        string a=”boy”;<br>        string b=”girl”;<br>        shortString(a,b)=”hello”;<br>        cout&lt;&lt;a&lt;&lt;endl;<br>        cout&lt;&lt;b&lt;&lt;endl;<br>        return 0;<br>   }  </p>
+</blockquote>
+<ul>
+<li>返回数组指针 ？ 形式为<code>Type (*function(参数))[dimension]</code>  ,如 int(*func(int i))[10]  //表示调用的数组大小为10<h3 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h3></li>
+<li>重载函数，形参数量和形参类型必须有所不同<h3 id="特殊用途语言特性"><a href="#特殊用途语言特性" class="headerlink" title="特殊用途语言特性"></a>特殊用途语言特性</h3></li>
+<li>内联函数： 可避免函数调用的开销，适用于优化规模较小，流程直接，频繁调用的函数。用法 ： <code>inline + 函数</code>  </li>
+<li>调试帮助 assert 与NDEBUG <code>assert(expt)//表达式为假输出信息，并终止程序，为真则不处理</code><h3 id="函数指针"><a href="#函数指针" class="headerlink" title="函数指针"></a>函数指针</h3></li>
+<li><p>函数指针指向的是函数而不是对象</p>
+<blockquote>
+<p>bool (<em>pf)(const string &amp;s1,const string &amp;s2) //pf指向一个函数，该函数参数是两个常字符串的引用，返回值为bool<br>bool </em>pf(const string &amp;s1,const string &amp;s2) //声明一个名为pf的函数，返回值为bool *  </p>
+</blockquote>
+</li>
+<li><p>使用函数指针,直接将函数名赋给pf，例如 <code>pf=lenthCompare</code> 或者直接使用<code>boo1 b1=pf(&quot;hello&quot;,&quot;compare&quot;);</code></p>
+</li>
+<li>函数指针形参 ，将函数指针作为形参，  <blockquote>
+<p>例如  void useBigger(const string &amp;s1,const string &amp;s2,bool <em>pf(const string &amp;,const string &amp;));使用时 useBigger(s1,s2,lenthCompare)<br>使用typedef 以及 decltype 简化表达式。<br>typedef bool (</em>Func)(const string &amp;,const string &amp;)<br>typedef decltype(lenthCompare) *Func<br>void useBigger(const string &amp;s1,const string &amp;s2,Func)</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><blockquote>
+<p> double add(double x,double y)<br>  {<br>  return x+y;<br>  }</p>
+<p> double difference(double x,double y)<br>  {<br>  return x-y;<br>  }</p>
+<p>double calculator(double (<strong>Fun)(double, double), double x,double y)<br>  {<br>  return (</strong>Fun)(x,y);<br>  }  </p>
+<p> int main(void)<br>  {<br>  double x=2;<br>  double y=4;<br>  double result1=calculator(add,x,y);<br>  double result2=calculator(difference,x,y);//调用者只需面对唯一的接口：calculator<br>  system(“pause”);<br>  return 0;<br>  }</p>
+</blockquote>
+<p><img src="http://i.imgur.com/0laU0HX.jpg" alt=""></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[C++primer 学习笔记（三）]]></title>
+      <url>/2017/06/25/C-primer-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h2 id="charpter-4"><a href="#charpter-4" class="headerlink" title="charpter 4"></a>charpter 4</h2><ul>
+<li>逻辑与&amp;&amp; 只有左侧运算对象为真才会对右侧对象求值  </li>
+<li>逻辑或|| 只有左侧运算对象为假才会对右侧对象求值</li>
+<li>++i先加再执行，i++先执行再加 ，建议++i，运算等级最高</li>
+<li>成员访问运算符 <code>ptr-&gt;mem</code> // <code>(*ptr)-&gt;mem</code>  </li>
+<li>条件运算符   <code>cond ? expr1 : expre2</code> 如果cond成立，expr1，否则expr2  </li>
+</ul>
+<h4 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h4><p>位运算作用于整数类型的对象 ， 运算符包括   </p>
+<blockquote>
+<p>~ 位求反<br>&lt;&lt; 左移  </p>
+<blockquote>
+<blockquote>
+<p>右移<br>&amp; 位与<br>^ 位异或<br>| 异或    </p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
+<li>移位运算 左移&lt;&lt;在右侧插入值为0，右移若为无符号则在左插入0，否则插入符号位。  </li>
+<li>位异或 若只有1个1则为1 ，否则为0</li>
+<li>置1 |= ，清0 &amp;=~<h4 id="sizeof运算符"><a href="#sizeof运算符" class="headerlink" title="sizeof运算符"></a>sizeof运算符</h4></li>
+<li>返回一条表达式或一个类型名字所占的字节数，所得size_t类型，sizeof(type)  sizeof expr</li>
+<li>与strlen()比较strlen()计算字符数组的字符数，以”\0”为结束判断，不计算为’\0’的数组元素。而sizeof计算数据（包括数组、变量、类型、结构体等）所占内存空间，用字节数表示  </li>
+<li>指针与静态数组的sizeof操作，指针均可看为变量类型的一种。所有指针变量的sizeof 操作结果均为4</li>
+<li>对于静态数组，sizeof可直接计算数组大小  </li>
+<li>注意：数组做型参时，数组名称当作指针使用！！</li>
+<li>sizeof(s)等于string类的大小，sizeof(s.c_str())得到的是与字符串长度。  </li>
+<li>求数组元素的个数,通常有下面两种写法：<blockquote>
+<p>int c1 = sizeof( a1 ) / sizeof( char ); // 总长度/单个元素的长度<br>int c2 = sizeof( a1 ) / sizeof( a1[0] ); // 总长度/第一个元素的长度<br><a href="http://www.cnblogs.com/chengxin1982/archive/2009/01/13/1374575.html" target="_blank" rel="external">http://www.cnblogs.com/chengxin1982/archive/2009/01/13/1374575.html</a></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><ul>
+<li>无符号+有符号运算  如果无符号类型不小于带符号的，那转为无符号的，如unsigned int 与 int  </li>
+<li>如无符号类型小于带符号的，结果依赖于机器</li>
+</ul>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ROS 导航学习 tf]]></title>
+      <url>/2017/06/21/ROS-%E5%AF%BC%E8%88%AA%E5%AD%A6%E4%B9%A0-tf/</url>
+      <content type="html"><![CDATA[<h4 id="头文件-tf-geometry-msgs"><a href="#头文件-tf-geometry-msgs" class="headerlink" title="头文件 tf,geometry_msgs"></a>头文件 tf,geometry_msgs</h4><ul>
+<li><h4 id="Broadcasting-a-Transform（广播变换）"><a href="#Broadcasting-a-Transform（广播变换）" class="headerlink" title="Broadcasting a Transform（广播变换）"></a>Broadcasting a Transform（广播变换）</h4>利用<code>tf::TransformBroadcaster   sendTransform</code>进行坐标变换的广播<blockquote>
+<pre><code>tf::StampedTransform::StampedTransform(    const 
+tf::Transform &amp;     input,  
+const ros::Time &amp;     timestamp,  
+</code></pre><p>   const std::string &amp;     frame_id,<br>   const std::string &amp;     child_frame_id<br>   )        </p>
+</blockquote>
+</li>
+</ul>
+<p>广播内容 :<br>第1个参数, 变换公式，Transform包括位姿pose和平移transform<br>第2个参数，需要给转换关系携带一个时间戳，标记为ros::Time::now()；<br>第3个参数，需要传递parent节点的名字； //想要变成的坐标系<br>第4个参数，传递的是child节点的名字；<br>由于tf假设所有的转换都是从parent到child的（考虑原点变换），当收到child坐标系的坐标，完成转化变成parent坐标系的坐标</p>
+<ul>
+<li><h4 id="Transform-的构造方式："><a href="#Transform-的构造方式：" class="headerlink" title="Transform 的构造方式："></a>Transform 的构造方式：</h4></li>
+<li><blockquote>
+<p>tf::Transform::Transform(const Quaternion &amp; q, //四元素<br>   const Vector3 &amp; c = Vector3(tfScalar(0), tfScalar(0), tfScalar(0)) )    </p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>tf::Transform::Transform(const Matrix3x3 &amp; b, //旋转矩阵<br>   const Vector3 &amp; c = Vector3(tfScalar(0), tfScalar(0),<br>tfScalar(0)) </p>
+<pre><code>)
+</code></pre><p>tf::Transform::Transform(const Transform &amp; othe//r)拷贝  </p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<pre><code>#include &lt;ros/ros.h&gt;  
+#include &lt;tf/transform_broadcaster.h&gt;  
+
+int main(int argc, char** argv){  
+  ros::init(argc, argv, &quot;robot_tf_publisher&quot;);  
+  ros::NodeHandle n;  
+
+  ros::Rate r(100);    
+tf::TransformBroadcaster broadcaster;  
+
+  while(n.ok()){  
+broadcaster.sendTransform(  
+  tf::StampedTransform(  
+  tf::Transform(tf::Quaternion(0, 0, 0, 1), tf::Vector3(0.1, 0.0, 0.2)),  
+  ros::Time::now(),&quot;base_link&quot;, &quot;base_laser&quot;));  
+r.sleep();  
+  }  
+}  
+</code></pre><h4 id="Using-a-Transform（调用变换）"><a href="#Using-a-Transform（调用变换）" class="headerlink" title="Using a Transform（调用变换）"></a>Using a Transform（调用变换）</h4><ul>
+<li><p>tf::TransformListener 该对象会自动订阅ROS中的tf消息，并且管理所有的变换关系数据。</p>
+</li>
+<li><p>回调函数void transformPoint(const tf::TransformListener&amp; listener){  }<br>PointStamped 类包含Point 以及Stamp (frame_id 和 时间戳)</p>
+</li>
+<li><p>利用</p>
+<blockquote>
+<p>void TransformListener::transformPoint(const std::string &amp;<br>target_frame,</p>
+<pre><code>const geometry_msgs::PointStamped &amp;     stamped_in,
+geometry_msgs::PointStamped &amp;     stamped_out     
+</code></pre><p>)    </p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>void Transformer::lookupTransform(<br> const std::string &amp;     target_frame,<br>    const std::string &amp;     source_frame,<br>    const ros::Time &amp;     time,<br>    StampedTransform &amp;     transform<br>    )<br>    //Get the transform between two frames by frame ID.</p>
+</blockquote>
+<pre><code>#include &lt;ros/ros.h&gt;  
+#include &lt;geometry_msgs/PointStamped.h&gt;  
+#include &lt;tf/transform_listener.h&gt;  
+
+void transformPoint(const tf::TransformListener&amp; listener){   
+  geometry_msgs::PointStamped laser_point;  
+  laser_point.header.frame_id = &quot;base_laser&quot;;  
+
+
+  laser_point.header.stamp = ros::Time();  
+
+  &lt;strong&gt;//just an arbitrary point in space&lt;/strong&gt;  
+  laser_point.point.x = 1.0;  
+  laser_point.point.y = 0.2;  
+  laser_point.point.z = 0.0;  
+
+}  
+
+int main(int argc, char** argv){  
+  ros::init(argc, argv, &quot;robot_tf_listener&quot;);  
+  ros::NodeHandle n;  
+
+  tf::TransformListener listener(ros::Duration(10));  
+
+  //we&apos;ll transform a point once every second  
+  ros::Timer timer = n.createTimer(ros::Duration(1.0), boost::bind(&amp;transformPoint, boost::ref(listener)));  
+
+  ros::spin();  
+
+}  
+</code></pre>]]></content>
+      
+        
+        <tags>
+            
+            <tag> ROS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[C++ primer学习笔记（二）]]></title>
+      <url>/2017/06/20/C-primer%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h2 id="charpter-3"><a href="#charpter-3" class="headerlink" title="charpter 3"></a>charpter 3</h2><ul>
+<li>using namespace::name<br>例如 <code>using std::cin ;</code>  //引入命名空间的某个成员<br>  <code>using namespace std ;</code>//引入命名空间std <h4 id="string-标准库"><a href="#string-标准库" class="headerlink" title="string 标准库"></a>string 标准库</h4>   #include string<br>   using namespace std;</li>
+</ul>
+<ul>
+<li><h5 id="string-初始化"><a href="#string-初始化" class="headerlink" title="string 初始化"></a>string 初始化</h5>  string s1(n,’c’) 将s1初始化为连续n个字符c组成<br>  string a(“hello”)</li>
+<li><h5 id="string-的基本操作-string-s"><a href="#string-的基本操作-string-s" class="headerlink" title="string 的基本操作 string s;"></a>string 的基本操作 <code>string s;</code></h5>  输入 <code>cin&gt;&gt;s</code>  //忽略开头的空白 直到遇到下一处空白停止<br>  读取一行 <code>geline(cin, s)</code> //保留空白 ，遇到换行符停止<br>  empty 是否为空<br>  size 返回长度不包含’/0’<code>s.size()</code> = <code>strlen(s.c_str())</code><br>  **注意size返回为无符号的整数</li>
+<li><h5 id="string-加法"><a href="#string-加法" class="headerlink" title="string 加法"></a>string 加法</h5>两侧必须有一个string 例如<code>&quot;hello&quot;+&quot;dd&quot;</code>不合法</li>
+<li><h5 id="string-字符的比较"><a href="#string-字符的比较" class="headerlink" title="string 字符的比较"></a>string 字符的比较</h5>isalnum() isalpha() 头文件cctype或者ctype.h <a href="http://book.2cto.com/201309/32066.html" target="_blank" rel="external">http://book.2cto.com/201309/32066.html</a></li>
+<li><h5 id="对string-对象每个字符操作"><a href="#对string-对象每个字符操作" class="headerlink" title="对string 对象每个字符操作"></a>对string 对象每个字符操作</h5>   for（declaration ： expression）<br>   statement  </li>
+</ul>
+<hr>
+<pre><code>for（auto c : str）
+cout&lt;&lt;c&lt;&lt;endl; 
+</code></pre><h4 id="vector-标准库"><a href="#vector-标准库" class="headerlink" title="vector 标准库"></a>vector 标准库</h4><ul>
+<li>头文件：include vector<br><code>vector&lt;T&gt; v1</code><br><code>vector&lt;T&gt; v2(n,val)</code></li>
+<li>列表初始化vector 对象<br><code>vector&lt;T&gt; v3{&quot;d&quot;,&quot;b&quot;,&quot;c&quot;}</code> 生成了三个对象<br>**花括号表示列表初始化，圆括号表示构造对象  </li>
+<li>#####vector中添加元素<br>push_back()在尾部添加元素  </li>
+<li>其他操作与string类型相似</li>
+</ul>
+<p>###注：size 操作得到的类型为size_type<br><code>vector&lt;int&gt;::size_type lenth</code><br><code>string::size_type lenth</code>    </p>
+<h4 id="迭代器使用"><a href="#迭代器使用" class="headerlink" title="迭代器使用"></a>迭代器使用</h4><ul>
+<li>迭代器运算符 <blockquote>
+<p>== !=  表示迭代器是否指向同一个元素，或者同一个迭代器是否只指向尾部</p>
+<ul>
+<li>iter 返回对改元素的引用<br>iter-&gt;mem == (*iter).mem<br>++iter –iter<br>如果为const_iterator 只能读，不能写<br>例如<code>string::const_iterator it</code><br>   <code>vector&lt;int&gt;::const_iteratot it</code><br>begin()，end() 根据对象确定是否为常量<br>cbegin(),cend() 返回为常值迭代器</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><blockquote>
+<p>size_t 类型 用来表示数组下标 足够大足以存任意对象的大小<br>  头文件cstddef // stddef.h  <code>unsigned int</code><br>size_t 类型表示C 中任何对象所能达到的最大长度。它是无符号整数， 因为负数在这里没有意义。它的目的是提供一种可移植的方法来声明与系统中可寻址的内存区域一致的长度。size_t 用做sizeof 操作符的返回值类型，同时也是很多函数的参数类型，包括malloc 和strlen。在声明诸如字符数或者数组索引这样的长度变量时用size_t 是好的做法。它经常用于循环计数器、数组索引，有时候还用在指针算术运算上。<br>数组的遍历 也可使用<code>for（auto i : scores）;</code><br>数组begin 和 end ，<code>int *beg = begin(ia);</code></p>
+<h4 id="注意：使用迭代器过程中不能使用push-back"><a href="#注意：使用迭代器过程中不能使用push-back" class="headerlink" title="注意：使用迭代器过程中不能使用push_back"></a>注意：使用迭代器过程中不能使用push_back</h4></blockquote>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[C++ primer学习笔记（二）]]></title>
+      <url>/2017/06/20/test/</url>
+      <content type="html"><![CDATA[<h2 id="charpter-3"><a href="#charpter-3" class="headerlink" title="charpter 3"></a>charpter 3</h2><ul>
+<li>using namespace::name<br>例如 <code>using std::cin ;</code>  //引入命名空间的某个成员<br>  <code>using namespace std ;</code>//引入命名空间std <h4 id="string-标准库"><a href="#string-标准库" class="headerlink" title="string 标准库"></a>string 标准库</h4><blockquote>
+<p>#include <string><br>   using namespace std;</string></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><h5 id="string-初始化"><a href="#string-初始化" class="headerlink" title="string 初始化"></a>string 初始化</h5>  string s1(n,’c’) 将s1初始化为连续n个字符c组成<br>  string a(“hello”)</li>
+<li><h5 id="string-的基本操作-string-s"><a href="#string-的基本操作-string-s" class="headerlink" title="string 的基本操作 string s"></a>string 的基本操作 <code>string s</code></h5>  输入 <code>cin&gt;&gt;s</code>  //忽略开头的空白 直到遇到下一处空白停止<br>  读取一行 <code>geline(cin, s)</code> //保留空白 ，遇到换行符停止<br>  empty 是否为空<br>  size 返回长度不包含’/0’<code>s.size()</code> = <code>strlen(s.c_str())</code><br>  **注意size返回为无符号的整数</li>
+<li>string 加法 两侧必须有一个string 例如<code>&quot;hello&quot;+&quot;dd&quot;</code>不合法</li>
+<li>string 字符的比较 isalnum() isalpha() </li>
+</ul>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[C++ primer 学习笔记（一）]]></title>
+      <url>/2017/06/18/C-primer-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h2 id="charpter1"><a href="#charpter1" class="headerlink" title="charpter1"></a>charpter1</h2><ul>
+<li>查看main函数的返回值： <code>linux $ echo $ ?</code><pre><code>` windows $ echo %ERRORLEVEL% `
+</code></pre></li>
+<li>标准输出输入对象：cout / cin / cerr / clog 显示警告和错误信息</li>
+<li>endl：操纵符，结束当前行，并将与设备关联的缓冲区内容刷入设备中。</li>
+<li>从键盘输入文件结束符  windows下 ctrl+Z ，unix下Ctrl+D  </li>
+<li>使用文件重定向 <code>$ addItems \&lt;infile outfile\&gt;</code>//addTtems为可执行文件<br>charpter2</li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<ul>
+<li><p>算术类型：</p>
+<blockquote>
+<p>char  8位<br>short 16位<br>int   16/32位<br>long  32位<br>long long 64位<br>float 32位<br>doubke 64位  </p>
+</blockquote>
+</li>
+<li><p>类型转换： 给无符号类型赋值时，超出范围，则值为总数取模后的余数。<br>例如unsigned char c= -1 ， c=-1%256=255  </p>
+</li>
+<li>含有无符号类型的表达式 ： 无符号+有符号 ，会将有符号强行转成无符号，方式同上。若结果为负，也会转成无符号  </li>
+<li>全局变量和局部变量同名，可使用：：来使用全局变量的值</li>
+<li>引用即别名，为已经存在的对象所起的另一个名字 int &amp;a=b；类型必须完全匹配，比如示例中b必须为int型</li>
+<li>指针： 定义时 int <em>p = &amp;a；类型必须相同，不能定义指向引用的指针。 空指针 ` int </em>p=0<code>；</code>if（p）表示如果p不是空指针则`</li>
+<li>常量指针<code>int *const p</code>，表示指针指向的地址无法改变，指针本身是常量  <pre><code>const int *p ,表示指针指向的对象是常量`  
+</code></pre></li>
+<li>类型别名： typedef xx  xx   <pre><code>* using xx=xx      
+</code></pre></li>
+<li>类型别名</li>
+</ul>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[rviz]]></title>
+      <url>/2017/05/19/rviz/</url>
+      <content type="html"><![CDATA[<h2 id="学习Rviz"><a href="#学习Rviz" class="headerlink" title="学习Rviz"></a>学习Rviz</h2><ul>
+<li><font color="#0099ff" size="4" face="宋体">1.Markers: Sending Basic Shapes (C++)</font><br><a href="http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes" target="_blank" rel="external">http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes</a></li>
+</ul>
+<p>rviz中基本的类型有visualization_msgs/Marker </p>
+<p>Marker 类型中主要有</p>
+<blockquote>
+<p>Header         //包括框架和时间戳</p>
+<p>ns               //marker的名字</p>
+<p>id                //与ns一起创建唯一的</p>
+<p>type            //发送类型</p>
+<p>action          // 通常有ADD or DELETE</p>
+<p>geometry_msgs/Pose pose</p>
+<p>geometry_msgs/Vector3 scale</p>
+<p>std_msgs/ColorRGBA color</p>
+<p>duration lifetime //持续时间，ros::Duration()意味着不会自动删除</p>
+<p>bool frame_locked </p>
+</blockquote>
+<p><strong>发布话题，消息类型为marker。rivz界面中添加marker，更改话题名</strong>。</p>
+<p>-<font color="#0099ff" size="4" face="宋体">2.Markers: Points and Lines (C++)</font> </p>
+<p>LINE_LIST   每一个线需要两个点 ，即一对点</p>
+<p>markers不仅提供简单的形状类型，还有点、线段、线集合等。</p>
+<p>LINE_STRIP     为点向量，每两点相连   </p>
+<p>-<font color="#0099ff" size="4" face="宋体">3.Markers: Interactive Markers</font> </p>
+<p>rviz中基本的类型有 visualization_msgs/InteractiveMarker</p>
+<p>如果你想创造一个节点提供一系列的交互markers，你需要构成一个InteractiveMarkerServer对象。rviz做为客户端。</p>
+<p><img src="http://i.imgur.com/yYxrmYp.png" alt=""></p>
+<p>###交互marker需了解<br><a href="http://docs.ros.org/api/visualization_msgs/html/index-msg.html" target="_blank" rel="external">http://docs.ros.org/api/visualization_msgs/html/index-msg.html</a><br><strong>visualization_msgs/InteractiveMarker, visualization_msgs/InteractiveMarkerControl and visualization_msgs/InteractiveMarkerFeedback</strong></p>
+<ol>
+<li>Writing a Simple Interactive Marker Server 交互服务器编写</li>
+</ol>
+<p>2. </p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> ROS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[marry you]]></title>
+      <url>/2017/05/13/marry-you/</url>
+      <content type="html"><![CDATA[<h1 id="BRUNO-MARS-MARRY-YOU"><a href="#BRUNO-MARS-MARRY-YOU" class="headerlink" title="BRUNO MARS - MARRY YOU"></a>BRUNO MARS - MARRY YOU</h1><font size="4">|<br>it’s a beautiful night we’re looking for something <font color="#0099ff" size="4">|</font> dumb to do<br><br>———-<br>       D                                           E<br>hey<font color="##0099FF" size="4">|</font>  baby i think i wanna marry <font color="#0099ff" size="4">|</font> you<br><br>———-<br>       G                                           D<br><br>is it the look in your eyes or is it <font color="#0099ff" size="4">|</font> this dancing juice<br><br>———-<br>       D                                           E<br>who <font color="#0099ff" size="4">|</font> cares baby’ i think i wanna marry<font color="#0099ff" size="4">|</font>  you<br><br>———-<br>      G                                           D<br>|well i know this little chapel on the boulevard<br><br>———-<br>       D<br>we can <font color="#0099ff" size="4">|</font> go whoa whoa<br><br>———-<br>       E<br>no one<font color="#0099ff" size="4">|</font> will no whoa<br><br>———-<br>      G<br>oh <font color="#0099ff" size="4">|</font>come on girl<br><br>———-<br>       D<br>who cares if we’re trashed<br>got a pocket full of cash we can blow whoa whoa<br>shots of patrol whoa whoa<br>and guitar girl<br><br>don’t say no no no no no<br>just say yeah yeah yeah yeah yeah<br>and we’ll go go go go go<br>if you’re ready’ like i’m ready<br><br>cos it’s a beautiful nigt we’re looking for something dumb to do<br>hey baby i think i wanna marry you<br>is it the look in your eyes or is it this dancing juice<br>who cares baby’ i think i wanna marry you<br><br>oh<br>i’ll go get the ring<br>let the choir bell sing like ooh ooh ooh<br>so what you wanna do ooh ooh<br>lets just run girl<br>if we wake up and you want to break up<br>that’s cool ooh ooh<br>no i won’t blame you ooh ooh<br>it was fun girl<br><br>don’t say no no no no no<br>just say yeah yeah yeah yeah yeah<br>and we’ll go go go go go<br>if you’re ready’ like i’m ready<br><br>cos it’s a beautiful nigt we’re looking for something dumb to do<br>hey baby i think i wanna marry you<br>is it the look in your eyes or is it this dancing juice<br>who cares baby’ i think i wanna marry you<br><br>just say i do ooh ooh ooh<br>tell me right now baby<br>tell me right now baby’ baby<br>just say i do ooh ooh ooh<br>tell me right now baby<br>tell me right now baby’ baby<br><br>oh<br>it’s a beautiful nigt we’re looking for something dumb to do<br>hey baby i think i wanna marry you<br>is it the look in your eyes or is it this dancing juice<br>who cares baby’ i think i wanna marry you<br><br></font> ]]></content>
+      
+        
+        <tags>
+            
+            <tag> 吉他 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[UDP编程]]></title>
+      <url>/2017/05/11/UDP%E7%BC%96%E7%A8%8B/</url>
+      <content type="html"><![CDATA[<p>UDP通信简单说来就是向固定IP发送数据，而不需要必须确认对方是否存在。通信过程简单，无需握手。当然也无法判断是否接收正常。</p>
+<p>UDP编程过程：<br>基本函数</p>
+<ul>
+<li><p>建立套接字<br>socket函数：为了执行网络输入输出，一个进程必须做的第一件事就是调用socket函数获得一个文件描述符。</p>
+<p>  <code>sockfd=socket(AF_INET,SOCK_DGRAM,0)</code>第一个参数指明了协议簇，目前支持5种协议簇，最常用的有AF_INET(IPv4协议)和AF_INET6(IPv6协议)；第二个参数指明套接口类型，有三种类型可选：SOCK_STREAM(字节流套接口)、SOCK_DGRAM(数据报套接口)和SOCK_RAW(原始套接口)；如果套接口类型不是原始套接口，那么第三个参数就为0。。</p>
+</li>
+</ul>
+<ul>
+<li><p>bind函数：为套接口分配一个本地IP和协议端口，对于网际协议，协议地址是32位IPv4地址或128位IPv6地址与16位的TCP或UDP端口号的组合；如指定端口为0，调用bind时内核将选择一个临时端口，如果指定一个通配IP地址，则要等到建立连接后内核才选择一个本地IP地址。<br><code>int bind(int sockfd, const struct sockaddr * server, socklen_t addrlen);</code></p>
+<p>  第一个参数是socket函数返回的套接口描述字；第二和第第三个参数分别是一个指向特定于协议的地址结构的指针和该地址结构的长度。</p>
+</li>
+</ul>
+<ul>
+<li>recvfrom函数：UDP使用recvfrom()函数接收数据，他类似于标准的read()，但是在recvfrom()函数中要指明目的地址<br>  <code>ssize_t recvfrom(int sockfd, void *buf, size_t len, int flags, struct sockaddr * from, size_t *addrlen);</code><br>返回接收到数据的长度－－－成功　　　-1－－－失败　0—无数据<br>  第一个参数套接字，第二个接受数组，第三个参数缓冲区长度，flags参数是传输控制标志，一般为0。from表示sockaddr结构地址，最后一个为sockaddr 结构大小</li>
+</ul>
+<ul>
+<li>sendto函数：UDP使用sendto()函数发送数据，他类似于标准的write()，但是在sendto()函数中要指明目的地址。<br><code>ssize_t sendto(int sockfd, const void *buf, size_t len, int flags, const struct sockaddr * to, int addrlen);</code><br>返回发送数据的长度－－－成功　　　-1－－－失败　</li>
+</ul>
+<p>　　前三个参数等同于函数read()的前三个参数，flags参数是传输控制标志。参数to指明数据将发往的协议地址，他的大小由addrlen参数来指定。</p>
+<ul>
+<li>select函数：<br><code>int select(int maxfdp,fd_set *readfds,fd_set *writefds,fd_set *errorfds,struct timeval *timeout);</code></li>
+</ul>
+<ol>
+<li>int maxfdp是一个整数值，指集合中所有文件描述符的范围，即所有文件描述符的最大值加1</li>
+<li>fd_set *readfds是指向fd_set结构的指针，这个集合中应该包括读取文件描述符</li>
+<li>fd_set *writefds是指向fd_set结构的指针，这个集合中应该写包括文件描述符</li>
+<li>fd_set *errorfds同上面两个参数的意图，用来监视文件错误异常</li>
+<li>struct timeval* timeout是select的超时时间，这个参数至关重要.超时时间内为阻塞，超时则调出，返回0值。错误返回-1；</li>
+</ol>
+<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><pre><code>#include&lt;stdio.h&gt;  
+#include&lt;string.h&gt;  
+#include&lt;unistd.h&gt;  
+#include&lt;sys/types.h&gt;  
+#include&lt;sys/socket.h&gt;  
+#include&lt;stdlib.h&gt;  
+#include&lt;netinet/in.h&gt;  
+#include&lt;arpa/inet.h&gt;  
+
+#define PORT 1234  
+#define MAXDATASIZE 100  
+
+main()  
+{  
+    int sockfd;  
+    struct sockaddr_in server;    
+    socklen_t addrlen;  
+    int num;  
+    char buf[MAXDATASIZE];  
+
+    if((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) == -1)   
+    {  
+        perror(&quot;Creatingsocket failed.&quot;);  
+        exit(1);  
+    }  
+
+    bzero(&amp;server,sizeof(server));  
+    server.sin_family=AF_INET;  
+    server.sin_port=htons(PORT);  
+    server.sin_addr.s_addr= htonl (INADDR_ANY);  
+    if(bind(sockfd, (struct sockaddr *)&amp;server, sizeof(server)) == -1)  
+    {  
+        perror(&quot;Bind()error.&quot;);  
+        exit(1);  
+    }     
+
+    addrlen=sizeof(server);  
+    while(1)    
+    {  
+      num =recvfrom(sockfd,buf,MAXDATASIZE,0,(struct sockaddr*)&amp;server,&amp;addrlen);                                     
+
+    if (num &lt; 0)  
+    {  
+        perror(&quot;recvfrom() error\n&quot;);  
+        exit(1);  
+    }  
+
+    buf[num] = &apos;\0&apos;;  
+    printf(&quot;You got a message (%s%) from client.\nIt&apos;s ip is%s, port is %d.\n&quot;,buf,inet_ntoa(client.sin_addr),htons(client.sin_port));   
+    sendto(sockfd,&quot;Welcometo my server.\n&quot;,22,0,(struct sockaddr *)&amp;client,addrlen);  
+
+    close(sockfd);    
+} 
+</code></pre><hr>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><pre><code>#include &lt;stdio.h&gt;  
+#include &lt;stdlib.h&gt;  
+#include &lt;unistd.h&gt;  
+#include &lt;string.h&gt;  
+#include &lt;sys/types.h&gt;  
+#include &lt;sys/socket.h&gt;  
+#include &lt;netinet/in.h&gt;  
+#include &lt;netdb.h&gt;  
+
+#define    UDP_TEST_PORT        8001
+#define UDP_SERVER_IP         &quot;192.168.60.169&quot;
+
+int main(int argc, char *argv[])  
+{  
+   struct sockaddr_in addr;
+   int sockfd, len = 0;    
+   socklen_t addr_len = sizeof(struct sockaddr_in);        
+   char buffer[256];
+
+   /* 建立socket，注意必须是SOCK_DGRAM */
+   if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) &lt; 0) {
+       perror(&quot;socket&quot;);
+       exit(1);
+   }
+
+   /* 填写sockaddr_in*/
+   bzero(&amp;addr, sizeof(addr));
+   addr.sin_family = AF_INET;
+   addr.sin_port = htons(UDP_TEST_PORT);
+   addr.sin_addr.s_addr = inet_addr(UDP_SERVER_IP);
+        close(sockfd);  
+
+  buffer=&quot;hello&quot;; 
+  while(1) {
+   sendto(sockfd, buffer, len, 0, (struct sockaddr *)&amp;addr, addr_len);
+   sleep(2); /*睡眠2秒*/
+   printf(&quot;%s\n&quot;,buffer);
+   }
+
+
+}  
+</code></pre><hr>
+<p>Select<br>由于recvfrom会造成程序堵塞，故而UDP一般可配合select函数使用</p>
+<pre><code>fd_set fds;
+timeval timeout={time,0};
+int net;
+
+while（1)
+{
+    timeout.tv_sec=time;
+    timeout.tv_usec=0;
+
+    FD_ZERO(&amp;fds);        //描述符情空
+    FD_SET(sockfd,&amp;fds);//将套接字绑定描述符
+    net=0;
+    net=select(sockfd+1,&amp;fds,NULL,NULL,&amp;timeout);
+
+    if(net&lt;0)
+    {
+        exit(-1);
+    }
+    else if(net==0) 
+    {
+        printf(&quot;timeout\n&quot;);
+
+    }    
+     else
+     {    if(FD_ISSET(sockfd,&amp;fds))
+        {
+            num =recvfrom(sockfd,buf,MAXDATASIZE,0,(struct sockaddr*);    
+        } 
+    }
+}
+</code></pre>]]></content>
+      
+        
+        <tags>
+            
+            <tag> 通信 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[机器人空间转换]]></title>
+      <url>/2017/04/23/%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2/</url>
+      <content type="html"><![CDATA[<h1 id="rotation"><a href="#rotation" class="headerlink" title="rotation"></a><font size="6">rotation</font></h1><p><img src="http://chart.googleapis.com/chart?cht=tx&chl=\Large _{}^{A}\textrm{P}_{B} \ast  _{ }^{B}\textrm{P}=_{ }^{A}\textrm{P}" style="border:none;"> </p>
+<p><font size="4">前者表示坐标系A到B的旋转矩阵，后两个分别表示各坐标系下P点的坐标</font></p>
+<p><img src="http://i.imgur.com/KmtUu2m.png" alt=""><br><img src="http://i.imgur.com/PPFDPru.png" alt=""></p>
+<h1 id="3D-transform"><a href="#3D-transform" class="headerlink" title="3D transform"></a><font size="6">3D transform</font></h1><p><img src="http://i.imgur.com/ORyVj5L.png" alt=""></p>
+<ul>
+<li>Moving around<br>The camera observes point P in its own coordinate frame. But then the transform from the world to the camera is T. What’s the position of the point in the world coordinate? T*p</li>
+</ul>
+<ol>
+<li>reference frame changed</li>
+<li>point changed<br>relative movement  </li>
+</ol>
+<h1 id="Transform-inverse"><a href="#Transform-inverse" class="headerlink" title="Transform inverse"></a><font size="6">Transform inverse</font></h1><p><img src="http://i.imgur.com/pBAg6LF.png" alt=""><br><img src="http://i.imgur.com/BmtNqqz.png" alt=""></p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[markdown一些用法]]></title>
+      <url>/2017/04/22/%E6%B5%8B%E8%AF%95/</url>
+      <content type="html"><![CDATA[<p>this is a test for markdown</p>
+<p><img src="http://i.imgur.com/Ly3CR5A.png" alt=""></p>
+<p><img src="http://chart.googleapis.com/chart?cht=tx&chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" style="border:none;"></p>
+<p><img src="http://chart.googleapis.com/chart?cht=tx&chl=\Large \frac{a}{b}" style="border:none;"></p>
+<p>插入公式方法：    </p>
+<p><strong>1.利用latex在线生成公式代码</strong><br><a href="http://latex.codecogs.com/eqneditor/editor.php" target="_blank" rel="external">http://latex.codecogs.com/eqneditor/editor.php</a></p>
+<p><strong>2.利用google chart服务器生成公式</strong><br>&lt;//img src=”<a href="http://chart.googleapis.com/chart?cht=tx&amp;chl=\Large" target="_blank" rel="external">http://chart.googleapis.com/chart?cht=tx&amp;chl=\Large</a> <em>x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}”</em>  style=”border:none;”//&gt;<br>更改倾斜部分内容即可 ，双斜杠需删掉</p>
+<p>更改字体：<a href="https://jingyan.baidu.com/article/380abd0a1c856d1d90192cd9.html" target="_blank" rel="external">https://jingyan.baidu.com/article/380abd0a1c856d1d90192cd9.html</a></p>
+<p><a href="http://blog.csdn.net/testcs_dn/article/details/45719357/" target="_blank" rel="external">http://blog.csdn.net/testcs_dn/article/details/45719357/</a></p>
+<font face="黑体">我是黑体字</font>
+
+<font color="#0099ff" size="4" face="黑体">color=#0099ff size=72 face=”黑体”</font>]]></content>
+      
+        
+        <tags>
+            
+            <tag> 学习 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>/2017/04/21/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+      
+        
+    </entry>
+    
+  
+  
 </search>
