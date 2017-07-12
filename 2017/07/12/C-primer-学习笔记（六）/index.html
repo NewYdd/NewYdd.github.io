@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ydd,学习，笔记" />
+  <meta name="keywords" content="C++," />
 
 
 
@@ -94,16 +94,17 @@
 
 
 
-<meta name="description" content="等一个人还是等一个故事">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://newydd.github.io/categories/index.html">
+<meta name="description" content="charpter8 IO库IO类 基本io类：istream,ostream,cin(iosteam的一个对象),cout(ostream的一个对象) 基本io类2：iostream定义了用于读写流的基本类型，fstream定义了读写命名文件的类型，sstream定义了读写内存string对象的类型。  iosream: 从流中读写fstream：从文件中读写sstream：从string中读写">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ primer 学习笔记（六）">
+<meta property="og:url" content="https://newydd.github.io/2017/07/12/C-primer-学习笔记（六）/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
-<meta property="og:description" content="等一个人还是等一个故事">
-<meta property="og:updated_time" content="2017-04-22T03:55:04.049Z">
+<meta property="og:description" content="charpter8 IO库IO类 基本io类：istream,ostream,cin(iosteam的一个对象),cout(ostream的一个对象) 基本io类2：iostream定义了用于读写流的基本类型，fstream定义了读写命名文件的类型，sstream定义了读写内存string对象的类型。  iosream: 从流中读写fstream：从文件中读写sstream：从string中读写">
+<meta property="og:updated_time" content="2017-07-12T00:29:50.344Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="等一个人还是等一个故事">
+<meta name="twitter:title" content="C++ primer 学习笔记（六）">
+<meta name="twitter:description" content="charpter8 IO库IO类 基本io类：istream,ostream,cin(iosteam的一个对象),cout(ostream的一个对象) 基本io类2：iostream定义了用于读写流的基本类型，fstream定义了读写命名文件的类型，sstream定义了读写内存string对象的类型。  iosream: 从流中读写fstream：从文件中读写sstream：从string中读写">
 
 
 
@@ -131,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://newydd.github.io/categories/"/>
+  <link rel="canonical" href="https://newydd.github.io/2017/07/12/C-primer-学习笔记（六）/"/>
 
 
 
 
 
-  <title>categories | 少年维特的小窝</title>
+  <title>C++ primer 学习笔记（六） | 少年维特的小窝</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -172,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -311,18 +312,190 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://newydd.github.io/2017/07/12/C-primer-学习笔记（六）/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ydd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年维特的小窝">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                C++ primer 学习笔记（六）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-12T08:09:44+08:00">
+                2017-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
+    <div class="post-body" itemprop="articleBody">
+
       
-    
+      
+
+      
+        <h2 id="charpter8-IO库"><a href="#charpter8-IO库" class="headerlink" title="charpter8 IO库"></a>charpter8 IO库</h2><h3 id="IO类"><a href="#IO类" class="headerlink" title="IO类"></a>IO类</h3><ul>
+<li>基本io类：istream,ostream,cin(iosteam的一个对象),cout(ostream的一个对象)</li>
+<li><p>基本io类2：iostream定义了用于读写流的基本类型，fstream定义了读写命名文件的类型，sstream定义了读写内存string对象的类型。</p>
+<blockquote>
+<p>iosream: 从流中读写<br>fstream：从文件中读写<br>sstream：从string中读写   </p>
+</blockquote>
+</li>
+<li><p>刷新输出缓冲区：endl-&gt;输出换行并刷新缓冲区  // flush-&gt;刷新 // ends-&gt; 输出空字符并刷新缓冲区</p>
+</li>
+<li>若每次输出操作后都刷新缓冲区，使用<code>unitbuf</code>，接下来的操作都进行一次flush操作。<code>nounitbuf</code>则回到正常的缓冲方式。<blockquote>
+<p>cout&lt;&lt;unitbuf  //之后的输出均刷新<br>cout&lt;&lt;nounitbuf  //回到正常缓冲方式    </p>
+</blockquote>
+</li>
+<li>大法师</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/02/C-primer-学习笔记（五）/" rel="prev" title="C++ primer 学习笔记（五）">
+                C++ primer 学习笔记（五） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
   </div>
 
 
@@ -354,8 +527,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -428,6 +610,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#charpter8-IO库"><span class="nav-number">1.</span> <span class="nav-text">charpter8 IO库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IO类"><span class="nav-number">1.1.</span> <span class="nav-text">IO类</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -553,6 +751,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
 
   
 
