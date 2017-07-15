@@ -101,7 +101,7 @@
 <meta property="og:url" content="https://newydd.github.io/2017/07/12/C-primer-学习笔记（六）/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
 <meta property="og:description" content="charpter8 IO库IO类 基本io类：istream,ostream,cin(iosteam的一个对象),cout(ostream的一个对象) 基本io类2：iostream定义了用于读写流的基本类型，fstream定义了读写命名文件的类型，sstream定义了读写内存string对象的类型。  iosream: 从流中读写fstream：从文件中读写sstream：从string中读写">
-<meta property="og:updated_time" content="2017-07-15T02:01:38.293Z">
+<meta property="og:updated_time" content="2017-07-15T03:18:07.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ primer 学习笔记（六）">
 <meta name="twitter:description" content="charpter8 IO库IO类 基本io类：istream,ostream,cin(iosteam的一个对象),cout(ostream的一个对象) 基本io类2：iostream定义了用于读写流的基本类型，fstream定义了读写命名文件的类型，sstream定义了读写内存string对象的类型。  iosream: 从流中读写fstream：从文件中读写sstream：从string中读写">
@@ -411,10 +411,21 @@
 </blockquote>
 <p>  打开模式mode<br>  ios::in    为输入(读)而打开文件<br>  ios::out    为输出(写)而打开文件<br>  ios::ate    初始位置：文件尾<br>  ios::app    所有输出附加在文件末尾<br>  ios::trunc    如果文件已存在则先删除该文件<br>  ios::binary    二进制方式</p>
 </li>
-<li>ofstream 写文件  ifstream 读文件  </li>
+<li>ofstream 写文件  ifstream 读文件, 若写文件时文件不存在则新建</li>
 <li>文件读写操作与cin，cout从控制台读写类似 举例：<blockquote>
 <p>ofstream out(); 写文件<br>out&lt;&lt;”…..”&lt;<endl; ifstream="" in();="" 读文件="" char="" s;="" in="">&gt;s<br>char buff[255]; in.getline(buff,100);</endl;></p>
-<h5 id="Tip-getline-用法（1）若是读进数组，则采用上述方式（2）若读入string-data，则直接getline-in-data"><a href="#Tip-getline-用法（1）若是读进数组，则采用上述方式（2）若读入string-data，则直接getline-in-data" class="headerlink" title="Tip: getline 用法（1）若是读进数组，则采用上述方式（2）若读入string data，则直接getline(in,data);"></a>Tip: getline 用法（1）若是读进数组，则采用上述方式（2）若读入string data，则直接getline(in,data);</h5></blockquote>
+<h5 id="Tip-getline-用法（1）若是读进数组，则采用上述方式（2）若读入string-data，则直接getline-in-data"><a href="#Tip-getline-用法（1）若是读进数组，则采用上述方式（2）若读入string-data，则直接getline-in-data" class="headerlink" title="Tip: getline 用法（1）若是读进数组，则采用上述方式（2）若读入string data，则直接getline(in,data);"></a>Tip: getline 用法（1）若是读进数组，则采用上述方式（2）若读入string data，则直接getline(in,data);</h5><p>写文件时，只有当模式为app时，才不会清除原文件。</p>
+<h3 id="string流的输入输出"><a href="#string流的输入输出" class="headerlink" title="string流的输入输出"></a>string流的输入输出</h3></blockquote>
+</li>
+<li>sstream strm； //sstream strm(s) 保存string s 的一个拷贝</li>
+<li>strm.str()；//返回strm中的值 </li>
+<li>strm.str(s)；// 将s拷贝到strm</li>
+<li></li>
+</ul>
+<h3 id="流的条件状态标志"><a href="#流的条件状态标志" class="headerlink" title="流的条件状态标志"></a>流的条件状态标志</h3><ul>
+<li>假设s为某个流。如 iostream s // fstream s //sstream s<blockquote>
+<p>s.eof() 若到达流末尾则返回true<br>s.fail() 若流崩溃则返回true :读写过程中出问题，或写入设备无空间，或格式错误<br>s.bad()  若流崩溃则返回true :读写过程中出问题，或写入设备无空间<br>s.good() 流正常状态为true<br>一般使用 <code>s&gt;&gt;a</code>为判断条件，其实使用的是<code>s.good()</code></p>
+</blockquote>
 </li>
 </ul>
 
@@ -630,7 +641,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#charpter8-IO库"><span class="nav-number">1.</span> <span class="nav-text">charpter8 IO库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IO类"><span class="nav-number">1.1.</span> <span class="nav-text">IO类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件的输入输出"><span class="nav-number">1.2.</span> <span class="nav-text">文件的输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Tip-getline-用法（1）若是读进数组，则采用上述方式（2）若读入string-data，则直接getline-in-data"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">Tip: getline 用法（1）若是读进数组，则采用上述方式（2）若读入string data，则直接getline(in,data);</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#charpter8-IO库"><span class="nav-number">1.</span> <span class="nav-text">charpter8 IO库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IO类"><span class="nav-number">1.1.</span> <span class="nav-text">IO类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件的输入输出"><span class="nav-number">1.2.</span> <span class="nav-text">文件的输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Tip-getline-用法（1）若是读进数组，则采用上述方式（2）若读入string-data，则直接getline-in-data"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">Tip: getline 用法（1）若是读进数组，则采用上述方式（2）若读入string data，则直接getline(in,data);</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#string流的输入输出"><span class="nav-number">1.3.</span> <span class="nav-text">string流的输入输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流的条件状态标志"><span class="nav-number">1.4.</span> <span class="nav-text">流的条件状态标志</span></a></li></ol></li></ol></div>
             
 
           </div>
