@@ -101,7 +101,7 @@
 <meta property="og:url" content="https://newydd.github.io/2017/07/12/C-primer-学习笔记（六）/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
 <meta property="og:description" content="charpter8 IO库IO类 基本io类：istream,ostream,cin(iosteam的一个对象),cout(ostream的一个对象) 基本io类2：iostream定义了用于读写流的基本类型，fstream定义了读写命名文件的类型，sstream定义了读写内存string对象的类型。  iosream: 从流中读写fstream：从文件中读写sstream：从string中读写">
-<meta property="og:updated_time" content="2017-07-15T03:21:49.313Z">
+<meta property="og:updated_time" content="2017-07-15T03:23:26.093Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ primer 学习笔记（六）">
 <meta name="twitter:description" content="charpter8 IO库IO类 基本io类：istream,ostream,cin(iosteam的一个对象),cout(ostream的一个对象) 基本io类2：iostream定义了用于读写流的基本类型，fstream定义了读写命名文件的类型，sstream定义了读写内存string对象的类型。  iosream: 从流中读写fstream：从文件中读写sstream：从string中读写">
@@ -403,8 +403,10 @@
 </li>
 <li>若每次输出操作后都刷新缓冲区，使用<code>unitbuf</code>，接下来的操作都进行一次flush操作。<code>nounitbuf</code>则回到正常的缓冲方式。<blockquote>
 <p>cout&lt;&lt;unitbuf  //之后的输出均刷新<br>cout&lt;&lt;nounitbuf  //回到正常缓冲方式    </p>
-<h3 id="文件的输入输出"><a href="#文件的输入输出" class="headerlink" title="文件的输入输出"></a>文件的输入输出</h3></blockquote>
+</blockquote>
 </li>
+</ul>
+<h3 id="文件的输入输出"><a href="#文件的输入输出" class="headerlink" title="文件的输入输出"></a>文件的输入输出</h3><ul>
 <li><p>头文件fstream支持文件IO：ifstream 从一个给定文件读取数据，ofstream向一个给定文件写入数据，以及fstream可以读写给定文件。</p>
 <blockquote>
 <p>基本操作<br>fstream my_file; //创建一个未绑定的文件流<br>my_file.open(s); //打开名为s的文件：s可以为string或字符串的指针<br>my_file.close()<br>my_file.is_open() //bool值，指出与my_file关联的文件是否打开<br>创建文件流方式：1）未绑定 2）绑定对象并打开<code>fstream my_file(s)</code> 3)绑定并以指定模式打开 <code>fstream my_file(s,mode|mode)</code>    </p>
