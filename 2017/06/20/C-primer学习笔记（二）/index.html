@@ -101,7 +101,7 @@
 <meta property="og:url" content="https://newydd.github.io/2017/06/20/C-primer学习笔记（二）/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
 <meta property="og:description" content="charpter 3 using namespace::name例如 using std::cin ;  //引入命名空间的某个成员  using namespace std ;//引入命名空间std string 标准库   #include string   using namespace std;   string 初始化  string s1(n,’c’) 将s1初始化为连续n个字符c组成">
-<meta property="og:updated_time" content="2017-06-28T11:48:47.652Z">
+<meta property="og:updated_time" content="2017-07-15T02:38:16.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ primer学习笔记（二）">
 <meta name="twitter:description" content="charpter 3 using namespace::name例如 using std::cin ;  //引入命名空间的某个成员  using namespace std ;//引入命名空间std string 标准库   #include string   using namespace std;   string 初始化  string s1(n,’c’) 将s1初始化为连续n个字符c组成">
@@ -416,8 +416,12 @@ cout&lt;&lt;c&lt;&lt;endl;
 <li>迭代器运算符 <blockquote>
 <p>== !=  表示迭代器是否指向同一个元素，或者同一个迭代器是否只指向尾部</p>
 <ul>
-<li>iter 返回对改元素的引用<br>iter-&gt;mem == (*iter).mem<br>++iter –iter<br>如果为const_iterator 只能读，不能写<br>例如<code>string::const_iterator it</code><br>   <code>vector&lt;int&gt;::const_iteratot it</code><br>begin()，end() 根据对象确定是否为常量<br>cbegin(),cend() 返回为常值迭代器</li>
+<li>iter 返回对改元素的引用<br>iter-&gt;mem == (*iter).mem<br>++iter –iter<br>如果为const_iterator 只能读，不能写<br>例如<code>string::const_iterator it</code><br>   <code>vector&lt;int&gt;::const_iteratot it</code><br>begin()，end() 根据对象确定是否为常量<br>cbegin(),cend() 返回为常值迭代器  </li>
 </ul>
+</blockquote>
+</li>
+<li>vector 遍历方法 <blockquote>
+<p>(1)<code>for(auto a:s){...}</code><br>(2)<code>auto a = s.begin()//vector&lt;T&gt;::iterator a=s.begin()</code><br>   <code>for(;a!=s.end();++a)</code></p>
 </blockquote>
 </li>
 </ul>
@@ -467,8 +471,8 @@ cout&lt;&lt;c&lt;&lt;endl;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/21/ROS-导航学习-tf/" rel="next" title="ROS 导航学习 tf">
-                <i class="fa fa-chevron-left"></i> ROS 导航学习 tf
+              <a href="/2017/06/20/test/" rel="next" title="C++ primer学习笔记（二）">
+                <i class="fa fa-chevron-left"></i> C++ primer学习笔记（二）
               </a>
             
           </div>
@@ -477,8 +481,8 @@ cout&lt;&lt;c&lt;&lt;endl;
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/20/test/" rel="prev" title="C++ primer学习笔记（二）">
-                C++ primer学习笔记（二） <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/18/C-primer-学习笔记（一）/" rel="prev" title="C++ primer 学习笔记（一）">
+                C++ primer 学习笔记（一） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
