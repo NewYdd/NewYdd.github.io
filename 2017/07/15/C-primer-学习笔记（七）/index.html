@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="charpter 9 顺序容器本章内容为第三章的拓展内容。顺序容器类型提供了快速顺序访问元素的能力。 顺序容器概述 基本容器 vector/deque/list/forward_list/array/string vector，string 将元素保存在持续的内存空间。可以快速访问元素。但是在容器中间添加或删除元素会非常费时。list和forward_list可以在任何位置添加或删除元素，但不支持">
+<meta name="description" content="charpter 9 顺序容器本章内容为第三章的拓展内容。顺序容器类型提供了快速顺序访问元素的能力。 顺序容器概述 基本容器 vector/deque/list/forward_list/array/string  vector，string 将元素保存在持续的内存空间。可以快速访问元素。但是在容器中间添加或删除元素会非常费时。   list和forward_list可以在任何位置添加或删除元素，">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++ primer 学习笔记（七）">
 <meta property="og:url" content="https://newydd.github.io/2017/07/15/C-primer-学习笔记（七）/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
-<meta property="og:description" content="charpter 9 顺序容器本章内容为第三章的拓展内容。顺序容器类型提供了快速顺序访问元素的能力。 顺序容器概述 基本容器 vector/deque/list/forward_list/array/string vector，string 将元素保存在持续的内存空间。可以快速访问元素。但是在容器中间添加或删除元素会非常费时。list和forward_list可以在任何位置添加或删除元素，但不支持">
-<meta property="og:updated_time" content="2017-07-15T10:42:11.680Z">
+<meta property="og:description" content="charpter 9 顺序容器本章内容为第三章的拓展内容。顺序容器类型提供了快速顺序访问元素的能力。 顺序容器概述 基本容器 vector/deque/list/forward_list/array/string  vector，string 将元素保存在持续的内存空间。可以快速访问元素。但是在容器中间添加或删除元素会非常费时。   list和forward_list可以在任何位置添加或删除元素，">
+<meta property="og:updated_time" content="2017-07-15T10:45:18.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ primer 学习笔记（七）">
-<meta name="twitter:description" content="charpter 9 顺序容器本章内容为第三章的拓展内容。顺序容器类型提供了快速顺序访问元素的能力。 顺序容器概述 基本容器 vector/deque/list/forward_list/array/string vector，string 将元素保存在持续的内存空间。可以快速访问元素。但是在容器中间添加或删除元素会非常费时。list和forward_list可以在任何位置添加或删除元素，但不支持">
+<meta name="twitter:description" content="charpter 9 顺序容器本章内容为第三章的拓展内容。顺序容器类型提供了快速顺序访问元素的能力。 顺序容器概述 基本容器 vector/deque/list/forward_list/array/string  vector，string 将元素保存在持续的内存空间。可以快速访问元素。但是在容器中间添加或删除元素会非常费时。   list和forward_list可以在任何位置添加或删除元素，">
 
 
 
@@ -395,7 +395,12 @@
         <h2 id="charpter-9-顺序容器"><a href="#charpter-9-顺序容器" class="headerlink" title="charpter 9 顺序容器"></a>charpter 9 顺序容器</h2><p>本章内容为第三章的拓展内容。顺序容器类型提供了快速顺序访问元素的能力。</p>
 <h3 id="顺序容器概述"><a href="#顺序容器概述" class="headerlink" title="顺序容器概述"></a>顺序容器概述</h3><ul>
 <li>基本容器 vector/deque/list/forward_list/array/string<blockquote>
-<p>vector，string 将元素保存在持续的内存空间。可以快速访问元素。但是在容器中间添加或删除元素会非常费时。<br>list和forward_list可以在任何位置添加或删除元素，但不支持随机访问，额外开销大<br>array 规定长度的数组<br>deque可以快速在头尾删除元素  </p>
+<ul>
+<li>vector，string 将元素保存在持续的内存空间。可以快速访问元素。但是在容器中间添加或删除元素会非常费时。  </li>
+<li>list和forward_list可以在任何位置添加或删除元素，但不支持随机访问，额外开销大  </li>
+<li>array 规定长度的数组  </li>
+<li>deque可以快速在头尾删除元素  </li>
+</ul>
 </blockquote>
 </li>
 <li>反向容器 reverse_iterator c，c.rbegin(),c.rend()//逆序迭代  <h3 id="容器常用"><a href="#容器常用" class="headerlink" title="容器常用"></a>容器常用</h3></li>
@@ -403,7 +408,11 @@
 <li>拷贝指定范围内的元素  vector<string> data(data2.begin(),data2.end())</string></li>
 <li>array用法：<code>array&lt;type,size&gt;</code>与普通数组的差别：普通数组不支持拷贝，array支持拷贝，数组类型匹配即可。不支持{}赋值。</li>
 <li>容器的拷贝与赋值：<blockquote>
-<p>赋值=。类型必须相同。赋值运算后，两容器大小相等，均为右侧容器大小，亦可通过{}赋值，除了array<br>swap(c1,c2)交换元素。类型必须相同，速度较拷贝快<br>替换操作 <code>c.assign(begin,end)//c.assign(il)//c.assign(n,t)//</code>类型匹配即可（const* 与string亦可）  </p>
+<ul>
+<li>赋值=。类型必须相同。赋值运算后，两容器大小相等，均为右侧容器大小，亦可通过{}赋值，除了array</li>
+<li>swap(c1,c2)交换元素。类型必须相同，速度较拷贝快  </li>
+<li>替换操作 <code>c.assign(begin,end)//c.assign(il)//c.assign(n,t)//</code>类型匹配即可（const* 与string亦可）  </li>
+</ul>
 </blockquote>
 </li>
 <li>容器的大小操作：(1)容器的大小size();(2)容器的最大容纳元素数max_size()；（3）容器是否为空empty();  </li>
