@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[C++ primer 学习笔记（六）]]></title>
     <url>%2F2017%2F07%2F12%2FC-primer-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[charpter8 IO库IO类 基本io类：istream,ostream,cin(iosteam的一个对象),cout(ostream的一个对象) 基本io类2：iostream定义了用于读写流的基本类型，fstream定义了读写命名文件的类型，sstream定义了读写内存string对象的类型。 iosream: 从流中读写fstream：从文件中读写sstream：从string中读写 刷新输出缓冲区：endl-&gt;输出换行并刷新缓冲区 // flush-&gt;刷新 // ends-&gt; 输出空字符并刷新缓冲区 若每次输出操作后都刷新缓冲区，使用unitbuf，接下来的操作都进行一次flush操作。nounitbuf则回到正常的缓冲方式。 cout&lt;&lt;unitbuf //之后的输出均刷新cout&lt;&lt;nounitbuf //回到正常缓冲方式 大法师]]></content>
+    <content type="text"><![CDATA[charpter8 IO库IO类 基本io类：istream,ostream,cin(iosteam的一个对象),cout(ostream的一个对象) 基本io类2：iostream定义了用于读写流的基本类型，fstream定义了读写命名文件的类型，sstream定义了读写内存string对象的类型。 iosream: 从流中读写fstream：从文件中读写sstream：从string中读写 刷新输出缓冲区：endl-&gt;输出换行并刷新缓冲区 // flush-&gt;刷新 // ends-&gt; 输出空字符并刷新缓冲区 若每次输出操作后都刷新缓冲区，使用unitbuf，接下来的操作都进行一次flush操作。nounitbuf则回到正常的缓冲方式。 cout&lt;&lt;unitbuf //之后的输出均刷新cout&lt;&lt;nounitbuf //回到正常缓冲方式 文件的输入输出 头文件fstream支持文件IO：ifstream 从一个给定文件读取数据，ofstream向一个给定文件写入数据，以及fstream可以读写给定文件。 基本操作fstream my_file; //创建一个未绑定的文件流my_file.open(s); //打开名为s的文件：s可以为string或字符串的指针my_file.close()my_file.is_open() //bool值，指出与my_file关联的文件是否打开创建文件流方式：1）未绑定 2）绑定对象并打开fstream my_file(s) 3)绑定并以指定模式打开 fstream my_file(s,mode) 打开模式 ios::in 为输入(读)而打开文件 ios::out 为输出(写)而打开文件 ios::ate 初始位置：文件尾 ios::app 所有输出附加在文件末尾 ios::trunc 如果文件已存在则先删除该文件 ios::binary 二进制方式]]></content>
       <tags>
         <tag>C++</tag>
       </tags>
