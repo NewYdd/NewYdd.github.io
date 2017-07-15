@@ -101,7 +101,7 @@
 <meta property="og:url" content="https://newydd.github.io/2017/07/12/C-primer-学习笔记（六）/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
 <meta property="og:description" content="charpter8 IO库IO类 基本io类：istream,ostream,cin(iosteam的一个对象),cout(ostream的一个对象) 基本io类2：iostream定义了用于读写流的基本类型，fstream定义了读写命名文件的类型，sstream定义了读写内存string对象的类型。  iosream: 从流中读写fstream：从文件中读写sstream：从string中读写">
-<meta property="og:updated_time" content="2017-07-15T03:23:26.093Z">
+<meta property="og:updated_time" content="2017-07-15T06:59:35.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ primer 学习笔记（六）">
 <meta name="twitter:description" content="charpter8 IO库IO类 基本io类：istream,ostream,cin(iosteam的一个对象),cout(ostream的一个对象) 基本io类2：iostream定义了用于读写流的基本类型，fstream定义了读写命名文件的类型，sstream定义了读写内存string对象的类型。  iosream: 从流中读写fstream：从文件中读写sstream：从string中读写">
@@ -421,10 +421,11 @@
 </li>
 </ul>
 <h3 id="string流的输入输出"><a href="#string流的输入输出" class="headerlink" title="string流的输入输出"></a>string流的输入输出</h3><ul>
+<li>sstream 的类型有istringstream、ostringstream、stringstream,分别为读、写、读写</li>
 <li>sstream strm； //sstream strm(s) 保存string s 的一个拷贝</li>
 <li>strm.str()；//返回strm中的值 </li>
 <li>strm.str(s)；// 将s拷贝到strm</li>
-<li></li>
+<li>注意 <code>strm.str(s)</code>只能赋值一次，若想再赋值，需要<code>strm.clear();</code> </li>
 </ul>
 <h3 id="流的条件状态标志"><a href="#流的条件状态标志" class="headerlink" title="流的条件状态标志"></a>流的条件状态标志</h3><ul>
 <li>假设s为某个流。如 iostream s // fstream s //sstream s<blockquote>
@@ -473,6 +474,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/15/C-primer-学习笔记（七）/" rel="next" title="C++ primer 学习笔记（七）">
+                <i class="fa fa-chevron-left"></i> C++ primer 学习笔记（七）
+              </a>
             
           </div>
 
@@ -577,7 +582,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
