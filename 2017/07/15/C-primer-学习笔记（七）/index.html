@@ -101,7 +101,7 @@
 <meta property="og:url" content="https://newydd.github.io/2017/07/15/C-primer-学习笔记（七）/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
 <meta property="og:description" content="charpter 9 顺序容器本章内容为第三章的拓展内容。顺序容器类型提供了快速顺序访问元素的能力。 顺序容器概述 基本容器 vector/deque/list/forward_list/array/string  vector，string 将元素保存在持续的内存空间。可以快速访问元素。但是在容器中间添加或删除元素会非常费时。   list和forward_list可以在任何位置添加或删除元素，">
-<meta property="og:updated_time" content="2017-07-15T12:24:33.411Z">
+<meta property="og:updated_time" content="2017-07-15T13:23:44.549Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ primer 学习笔记（七）">
 <meta name="twitter:description" content="charpter 9 顺序容器本章内容为第三章的拓展内容。顺序容器类型提供了快速顺序访问元素的能力。 顺序容器概述 基本容器 vector/deque/list/forward_list/array/string  vector，string 将元素保存在持续的内存空间。可以快速访问元素。但是在容器中间添加或删除元素会非常费时。   list和forward_list可以在任何位置添加或删除元素，">
@@ -421,7 +421,14 @@
 <p>用法：<br>（1）<code>seq.insert(iterator,xx)</code>插到迭代器位置之前。缺点耗时<br>（2）<code>seq.insert(iterator,n,xx)</code>插10个<br>（3）<code>seq.insert(iteratot,{xx,xx,xx,xx})</code><br> insert返回值为指向当前位置的迭代器  </p>
 </blockquote>
 </li>
-<li></li>
+<li>访问元素 front/bach首尾元素 value = a.front();//必须保证非空  </li>
+<li>删除元素 （array不满足该操作）<blockquote>
+<p><code>c.pop_back()、c.pop_front()</code>（vector,string 不支持破pop_front和push_front）<br><code>c.clear()</code><br><code>c.erase(p)</code>// 删除迭代器指定元素。返回删除后位置迭代器。<br><code>c.erase(b,e)</code>//删除迭代器b和e所制定范围内的元素。返回最后一个删除元素之后元素位置迭代器  、</p>
+</blockquote>
+</li>
+<li>改变容器大小（array不支持该操作）<code>c.resize(size)</code>,若大小大于当前大小，则增加至容器尾部，若小于，则删除后部位容器元素。  </li>
+<li><em>*</em>添加/删除vector、string、deque元素将导致迭代器失效。erase，insert操作可以更新迭代器，因为其返回值为更新后位置迭代器。  </li>
+<li><em>*</em>不要保存end返回的迭代器。<code>end = c.end()  不建议</code></li>
 </ul>
 
       
