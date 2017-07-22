@@ -101,7 +101,7 @@
 <meta property="og:url" content="https://newydd.github.io/2017/07/18/C-primer-学习笔记（八）/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
 <meta property="og:description" content="charpter 10 泛型算法 大多数算法定义在头文件algorithm中 find函数 find(begin,end,val) 返回值 指向第一个等于给定值的元素的迭代器。返回end表示没有找到     find_if函数 它和find算法很类似返回的是找到元素的佚代器。它的第三个参数是一个函数指针(function pointer)或函数对象(object functional)如果是函数对">
-<meta property="og:updated_time" content="2017-07-22T06:44:37.247Z">
+<meta property="og:updated_time" content="2017-07-22T06:54:35.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ primer 学习笔记（八）">
 <meta name="twitter:description" content="charpter 10 泛型算法 大多数算法定义在头文件algorithm中 find函数 find(begin,end,val) 返回值 指向第一个等于给定值的元素的迭代器。返回end表示没有找到     find_if函数 它和find算法很类似返回的是找到元素的佚代器。它的第三个参数是一个函数指针(function pointer)或函数对象(object functional)如果是函数对">
@@ -400,8 +400,10 @@
 </li>
 <li>find_if函数<blockquote>
 <p>它和find算法很类似返回的是找到元素的佚代器。它的第三个参数是一个函数指针(function pointer)或函数对象(object functional)如果是函数对象。</p>
-<h3 id="只读算法"><a href="#只读算法" class="headerlink" title="只读算法"></a>只读算法</h3></blockquote>
+</blockquote>
 </li>
+</ul>
+<h3 id="只读算法"><a href="#只读算法" class="headerlink" title="只读算法"></a>只读算法</h3><ul>
 <li>accumulate(begin,end,初值)表示从范围内求和  ！注意初值必须和类型严格一致</li>
 <li>equal(r1.begin(),r1.end(),r2.begin()) 比较两对于序列是否相等<h3 id="写容器元素算法"><a href="#写容器元素算法" class="headerlink" title="写容器元素算法"></a>写容器元素算法</h3></li>
 <li>fill(begin,end,val),范围内置成val值</li>
@@ -415,15 +417,19 @@
 <li>bind函数：接受一个可调用对象，生成一个新的可调用对象来适应原对象的参数列表  </li>
 <li>形式 <code>auto newCallable = bind(callable,arg_list)</code>,当调用newCallble时，会调用callable，并传递给它arg_list中的参数。其中可能会包含形如<code>_n</code>的名字,表示参数的位置<blockquote>
 <p>举例 auto check_size6 = bind(check_size,_1,6);<br>这边checksize(const &amp;s,size_type:size),而check_size6(s),对应于_1这个占位参数，6为默认参数<br> auto check_size6 = bind(check_size,_1,_2); check_size6(s,6);<br> 如果参数需要引用，则必须使用ref 比如bind(check_size,_1,ref(sz));</p>
-<h3 id="其他迭代器"><a href="#其他迭代器" class="headerlink" title="其他迭代器"></a>其他迭代器</h3><h4 id="插入迭代器"><a href="#插入迭代器" class="headerlink" title="插入迭代器"></a>插入迭代器</h4><p>实现向给定容器添加元素</p>
 </blockquote>
 </li>
+</ul>
+<h3 id="其他迭代器"><a href="#其他迭代器" class="headerlink" title="其他迭代器"></a>其他迭代器</h3><h4 id="插入迭代器"><a href="#插入迭代器" class="headerlink" title="插入迭代器"></a>插入迭代器</h4><p>实现向给定容器添加元素</p>
+<ul>
 <li>back_inserter,front_inserter,inserter</li>
 <li>inserter(c,iter),返回值为iter位置前元素的位置 <blockquote>
 <p>it=inserter(c,iter); *it=val;<br>等价于: iter=c.insert(iter,val);++iter；</p>
-<h4 id="iosream-迭代"><a href="#iosream-迭代" class="headerlink" title="iosream 迭代"></a>iosream 迭代</h4><h4 id="反向迭代器"><a href="#反向迭代器" class="headerlink" title="反向迭代器"></a>反向迭代器</h4><p>除forward_list之外，其他容器都支持反向迭代器。rbegin(),rend();</p>
 </blockquote>
 </li>
+</ul>
+<h4 id="iosream-迭代"><a href="#iosream-迭代" class="headerlink" title="iosream 迭代"></a>iosream 迭代</h4><h4 id="反向迭代器"><a href="#反向迭代器" class="headerlink" title="反向迭代器"></a>反向迭代器</h4><p>除forward_list之外，其他容器都支持反向迭代器。rbegin(),rend();</p>
+<ul>
 <li>反向迭代器转换为普通迭代器 rdiedai.base();</li>
 <li><code>[line.rbegin(),rcomma) ==[rcomma.base(),line.end)</code></li>
 </ul>
