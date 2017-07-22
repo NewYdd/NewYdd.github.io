@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ydd,学习，笔记" />
+  <meta name="keywords" content="C++," />
 
 
 
@@ -94,15 +94,17 @@
 
 
 
-<meta name="description" content="等一个人还是等一个故事">
-<meta property="og:type" content="website">
-<meta property="og:title" content="少年维特的小窝">
-<meta property="og:url" content="https://newydd.github.io/archives/index.html">
+<meta name="description" content="charpter 10 泛型算法 大多数算法定义在头文件algorithm中 find函数 find(begin,end,val) 返回值 指向第一个等于给定值的元素的迭代器。返回end表示没有找到     find_if函数 它和find算法很类似返回的是找到元素的佚代器。它的第三个参数是一个函数指针(function pointer)或函数对象(object functional)如果是函数对">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ primer 学习笔记（八）">
+<meta property="og:url" content="https://newydd.github.io/2017/07/18/C-primer-学习笔记（八）/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
-<meta property="og:description" content="等一个人还是等一个故事">
+<meta property="og:description" content="charpter 10 泛型算法 大多数算法定义在头文件algorithm中 find函数 find(begin,end,val) 返回值 指向第一个等于给定值的元素的迭代器。返回end表示没有找到     find_if函数 它和find算法很类似返回的是找到元素的佚代器。它的第三个参数是一个函数指针(function pointer)或函数对象(object functional)如果是函数对">
+<meta property="og:updated_time" content="2017-07-22T06:44:37.247Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="少年维特的小窝">
-<meta name="twitter:description" content="等一个人还是等一个故事">
+<meta name="twitter:title" content="C++ primer 学习笔记（八）">
+<meta name="twitter:description" content="charpter 10 泛型算法 大多数算法定义在头文件algorithm中 find函数 find(begin,end,val) 返回值 指向第一个等于给定值的元素的迭代器。返回end表示没有找到     find_if函数 它和find算法很类似返回的是找到元素的佚代器。它的第三个参数是一个函数指针(function pointer)或函数对象(object functional)如果是函数对">
 
 
 
@@ -130,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://newydd.github.io/archives/"/>
+  <link rel="canonical" href="https://newydd.github.io/2017/07/18/C-primer-学习笔记（八）/"/>
 
 
 
 
 
-  <title>归档 | 少年维特的小窝</title>
+  <title>C++ primer 学习笔记（八） | 少年维特的小窝</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -171,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -309,403 +311,212 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 16 篇日志。 继续努力。
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://newydd.github.io/2017/07/18/C-primer-学习笔记（八）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ydd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="少年维特的小窝">
     </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                C++ primer 学习笔记（八）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-18T20:54:00+08:00">
+                2017-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
-      
 
+      
+        <h2 id="charpter-10-泛型算法"><a href="#charpter-10-泛型算法" class="headerlink" title="charpter 10 泛型算法"></a>charpter 10 泛型算法</h2><ul>
+<li>大多数算法定义在头文件algorithm中</li>
+<li>find函数<blockquote>
+<p>find(begin,end,val) 返回值 指向第一个等于给定值的元素的迭代器。返回end表示没有找到  </p>
+</blockquote>
+</li>
+<li>find_if函数<blockquote>
+<p>它和find算法很类似返回的是找到元素的佚代器。它的第三个参数是一个函数指针(function pointer)或函数对象(object functional)如果是函数对象。</p>
+<h3 id="只读算法"><a href="#只读算法" class="headerlink" title="只读算法"></a>只读算法</h3></blockquote>
+</li>
+<li>accumulate(begin,end,初值)表示从范围内求和  ！注意初值必须和类型严格一致</li>
+<li>equal(r1.begin(),r1.end(),r2.begin()) 比较两对于序列是否相等<h3 id="写容器元素算法"><a href="#写容器元素算法" class="headerlink" title="写容器元素算法"></a>写容器元素算法</h3></li>
+<li>fill(begin,end,val),范围内置成val值</li>
+<li>fill_n (dest,n,val)，从dest开始n个置成val值。不能超过范围</li>
+<li>copy(1.begin,1.end,2.begin)</li>
+<li>replace(begin(),end(),old,new)<h3 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h3></li>
+<li>排序 sort(begin,end)</li>
+<li>unique(begin,end)将重复项放置尾部，返回值为指向不重复元素之后的一个</li>
+<li>stable_sort 稳定排序算法维持相等元素的原有顺序</li>
+<li>sort可添加函数，即（begin，end，fun）<h3 id="参数绑定"><a href="#参数绑定" class="headerlink" title="参数绑定"></a>参数绑定</h3>头文件：functional  以及声明 <code>using namespace std::placeholders</code>  </li>
+<li>bind函数：接受一个可调用对象，生成一个新的可调用对象来适应原对象的参数列表  </li>
+<li>形式 <code>auto newCallable = bind(callable,arg_list)</code>,当调用newCallble时，会调用callable，并传递给它arg_list中的参数。其中可能会包含形如<code>_n</code>的名字,表示参数的位置<blockquote>
+<p>举例 auto check_size6 = bind(check_size,_1,6);<br>这边checksize(const &amp;s,size_type:size),而check_size6(s),对应于_1这个占位参数，6为默认参数<br> auto check_size6 = bind(check_size,_1,_2); check_size6(s,6);<br> 如果参数需要引用，则必须使用ref 比如bind(check_size,_1,ref(sz));</p>
+<h3 id="其他迭代器"><a href="#其他迭代器" class="headerlink" title="其他迭代器"></a>其他迭代器</h3><h4 id="插入迭代器"><a href="#插入迭代器" class="headerlink" title="插入迭代器"></a>插入迭代器</h4><p>实现向给定容器添加元素</p>
+</blockquote>
+</li>
+<li>back_inserter,front_inserter,inserter</li>
+<li>inserter(c,iter),返回值为iter位置前元素的位置 <blockquote>
+<p>it=inserter(c,iter); *it=val;<br>等价于: iter=c.insert(iter,val);++iter；</p>
+<h4 id="iosream-迭代"><a href="#iosream-迭代" class="headerlink" title="iosream 迭代"></a>iosream 迭代</h4><h4 id="反向迭代器"><a href="#反向迭代器" class="headerlink" title="反向迭代器"></a>反向迭代器</h4><p>除forward_list之外，其他容器都支持反向迭代器。rbegin(),rend();</p>
+</blockquote>
+</li>
+<li>反向迭代器转换为普通迭代器 rdiedai.base();</li>
+<li><code>[line.rbegin(),rcomma) ==[rcomma.base(),line.end)</code></li>
+</ul>
+
+      
+    </div>
+
+    <div>
       
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
         </div>
       
+
+      
+        
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          <span class="post-nav-divider"></span>
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/18/C-primer-学习笔记（八）/" itemprop="url">
-              
-                <span itemprop="name">C++ primer 学习笔记（八）</span>
-              
-            </a>
-        
-      </h1>
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/15/C-primer-学习笔记（七）/" rel="prev" title="C++ primer 学习笔记（七）">
+                C++ primer 学习笔记（七） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-18T20:54:00+08:00"
-              content="2017-07-18" >
-          07-18
-        </time>
-      </div>
-
-    </header>
+      
+      
+    </footer>
   </article>
 
 
 
-    
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 
       
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/15/C-primer-学习笔记（七）/" itemprop="url">
-              
-                <span itemprop="name">C++ primer 学习笔记（七）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-15T15:01:59+08:00"
-              content="2017-07-15" >
-          07-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/12/C-primer-学习笔记（六）/" itemprop="url">
-              
-                <span itemprop="name">C++ primer 学习笔记（六）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-12T08:09:44+08:00"
-              content="2017-07-12" >
-          07-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/02/C-primer-学习笔记（五）/" itemprop="url">
-              
-                <span itemprop="name">C++ primer 学习笔记（五）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-02T19:25:54+08:00"
-              content="2017-07-02" >
-          07-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/28/C-primer-学习笔记（四）/" itemprop="url">
-              
-                <span itemprop="name">C++ primer 学习笔记（四）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-28T14:43:23+08:00"
-              content="2017-06-28" >
-          06-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/25/C-primer-学习笔记（三）/" itemprop="url">
-              
-                <span itemprop="name">C++primer 学习笔记（三）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-25T19:37:14+08:00"
-              content="2017-06-25" >
-          06-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/21/ROS-导航学习-tf/" itemprop="url">
-              
-                <span itemprop="name">ROS 导航学习 tf</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-21T21:34:33+08:00"
-              content="2017-06-21" >
-          06-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/20/C-primer学习笔记（二）/" itemprop="url">
-              
-                <span itemprop="name">C++ primer学习笔记（二）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-20T15:01:02+08:00"
-              content="2017-06-20" >
-          06-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/20/test/" itemprop="url">
-              
-                <span itemprop="name">C++ primer学习笔记（二）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-20T15:01:02+08:00"
-              content="2017-06-20" >
-          06-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/18/C-primer-学习笔记（一）/" itemprop="url">
-              
-                <span itemprop="name">C++ primer 学习笔记（一）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-18T20:14:42+08:00"
-              content="2017-06-18" >
-          06-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
+    </div>
+  </div>
 
 
           </div>
@@ -713,6 +524,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -732,8 +547,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -806,6 +630,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#charpter-10-泛型算法"><span class="nav-number">1.</span> <span class="nav-text">charpter 10 泛型算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#只读算法"><span class="nav-number">1.1.</span> <span class="nav-text">只读算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写容器元素算法"><span class="nav-number">1.2.</span> <span class="nav-text">写容器元素算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元素操作"><span class="nav-number">1.3.</span> <span class="nav-text">元素操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数绑定"><span class="nav-number">1.4.</span> <span class="nav-text">参数绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他迭代器"><span class="nav-number">1.5.</span> <span class="nav-text">其他迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插入迭代器"><span class="nav-number">1.5.1.</span> <span class="nav-text">插入迭代器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iosream-迭代"><span class="nav-number">1.5.2.</span> <span class="nav-text">iosream 迭代</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反向迭代器"><span class="nav-number">1.5.3.</span> <span class="nav-text">反向迭代器</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -931,11 +771,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
 
 
   
