@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C++ primer 学习笔记（九）]]></title>
+    <url>%2F2017%2F07%2F23%2FC-primer-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B9%9D%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[charpter 11 关联容器顺序容器中的元素是按在容器中的位置来顺序保存和访问的。而关联容器中的元素是按 关键字 来保存和访问的。 标准库提供8种关联容器。允许重复关键字的容器的名字中都有multi。不保持关键字顺序存储的容器的名字都已unordered开头 map,set,multimap,multiset,unordered_map,unordered_set,unordered_multimap,unordered_multiset map关联数组，与正常数组类似，不同之处在于其下标不必是整数，通过关键字来查找值而不是位置 map的简单使用map&lt;关键字类型，值类型&gt; 变量名，map使用first保存关键字和second保存数值 set计时关键字的简单集合，当只想知道一个值是否存在，set是最有用的。]]></content>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[C++ primer 学习笔记（八）]]></title>
     <url>%2F2017%2F07%2F18%2FC-primer-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89%2F</url>
     <content type="text"><![CDATA[charpter 10 泛型算法 大多数算法定义在头文件algorithm中 find函数 find(begin,end,val) 返回值 指向第一个等于给定值的元素的迭代器。返回end表示没有找到 find_if函数 它和find算法很类似返回的是找到元素的佚代器。它的第三个参数是一个函数指针(function pointer)或函数对象(object functional)如果是函数对象。 只读算法 accumulate(begin,end,初值)表示从范围内求和 ！注意初值必须和类型严格一致 equal(r1.begin(),r1.end(),r2.begin()) 比较两对于序列是否相等写容器元素算法 fill(begin,end,val),范围内置成val值 fill_n (dest,n,val)，从dest开始n个置成val值。不能超过范围 copy(1.begin,1.end,2.begin) replace(begin(),end(),old,new)元素操作 排序 sort(begin,end) unique(begin,end)将重复项放置尾部，返回值为指向不重复元素之后的一个 stable_sort 稳定排序算法维持相等元素的原有顺序 sort可添加函数，即（begin，end，fun）参数绑定头文件：functional 以及声明 using namespace std::placeholders bind函数：接受一个可调用对象，生成一个新的可调用对象来适应原对象的参数列表 形式 auto newCallable = bind(callable,arg_list),当调用newCallble时，会调用callable，并传递给它arg_list中的参数。其中可能会包含形如_n的名字,表示参数的位置 举例 auto check_size6 = bind(check_size,_1,6);这边checksize(const &amp;s,size_type:size),而check_size6(s),对应于_1这个占位参数，6为默认参数 auto check_size6 = bind(check_size,_1,_2); check_size6(s,6); 如果参数需要引用，则必须使用ref 比如bind(check_size,_1,ref(sz)); 其他迭代器插入迭代器实现向给定容器添加元素 back_inserter,front_inserter,inserter inserter(c,iter),返回值为iter位置前元素的位置 it=inserter(c,iter); *it=val;等价于: iter=c.insert(iter,val);++iter； iosream 迭代反向迭代器除forward_list之外，其他容器都支持反向迭代器。rbegin(),rend(); 反向迭代器转换为普通迭代器 rdiedai.base(); [line.rbegin(),rcomma) ==[rcomma.base(),line.end)]]></content>

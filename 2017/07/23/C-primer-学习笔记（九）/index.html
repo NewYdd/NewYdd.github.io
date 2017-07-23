@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="charpter 10 泛型算法 大多数算法定义在头文件algorithm中 find函数 find(begin,end,val) 返回值 指向第一个等于给定值的元素的迭代器。返回end表示没有找到     find_if函数 它和find算法很类似返回的是找到元素的佚代器。它的第三个参数是一个函数指针(function pointer)或函数对象(object functional)如果是函数对">
+<meta name="description" content="charpter 11 关联容器顺序容器中的元素是按在容器中的位置来顺序保存和访问的。而关联容器中的元素是按 关键字 来保存和访问的。  标准库提供8种关联容器。允许重复关键字的容器的名字中都有multi。不保持关键字顺序存储的容器的名字都已unordered开头    map,set,multimap,multiset,unordered_map,unordered_set,unordered_">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++ primer 学习笔记（八）">
-<meta property="og:url" content="https://newydd.github.io/2017/07/18/C-primer-学习笔记（八）/index.html">
+<meta property="og:title" content="C++ primer 学习笔记（九）">
+<meta property="og:url" content="https://newydd.github.io/2017/07/23/C-primer-学习笔记（九）/index.html">
 <meta property="og:site_name" content="少年维特的小窝">
-<meta property="og:description" content="charpter 10 泛型算法 大多数算法定义在头文件algorithm中 find函数 find(begin,end,val) 返回值 指向第一个等于给定值的元素的迭代器。返回end表示没有找到     find_if函数 它和find算法很类似返回的是找到元素的佚代器。它的第三个参数是一个函数指针(function pointer)或函数对象(object functional)如果是函数对">
-<meta property="og:updated_time" content="2017-07-22T06:54:35.023Z">
+<meta property="og:description" content="charpter 11 关联容器顺序容器中的元素是按在容器中的位置来顺序保存和访问的。而关联容器中的元素是按 关键字 来保存和访问的。  标准库提供8种关联容器。允许重复关键字的容器的名字中都有multi。不保持关键字顺序存储的容器的名字都已unordered开头    map,set,multimap,multiset,unordered_map,unordered_set,unordered_">
+<meta property="og:updated_time" content="2017-07-23T02:58:02.674Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++ primer 学习笔记（八）">
-<meta name="twitter:description" content="charpter 10 泛型算法 大多数算法定义在头文件algorithm中 find函数 find(begin,end,val) 返回值 指向第一个等于给定值的元素的迭代器。返回end表示没有找到     find_if函数 它和find算法很类似返回的是找到元素的佚代器。它的第三个参数是一个函数指针(function pointer)或函数对象(object functional)如果是函数对">
+<meta name="twitter:title" content="C++ primer 学习笔记（九）">
+<meta name="twitter:description" content="charpter 11 关联容器顺序容器中的元素是按在容器中的位置来顺序保存和访问的。而关联容器中的元素是按 关键字 来保存和访问的。  标准库提供8种关联容器。允许重复关键字的容器的名字中都有multi。不保持关键字顺序存储的容器的名字都已unordered开头    map,set,multimap,multiset,unordered_map,unordered_set,unordered_">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://newydd.github.io/2017/07/18/C-primer-学习笔记（八）/"/>
+  <link rel="canonical" href="https://newydd.github.io/2017/07/23/C-primer-学习笔记（九）/"/>
 
 
 
 
 
-  <title>C++ primer 学习笔记（八） | 少年维特的小窝</title>
+  <title>C++ primer 学习笔记（九） | 少年维特的小窝</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -321,7 +321,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://newydd.github.io/2017/07/18/C-primer-学习笔记（八）/">
+    <link itemprop="mainEntityOfPage" href="https://newydd.github.io/2017/07/23/C-primer-学习笔记（九）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ydd">
@@ -342,7 +342,7 @@
             
             
               
-                C++ primer 学习笔记（八）
+                C++ primer 学习笔记（九）
               
             
           </h1>
@@ -357,8 +357,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-18T20:54:00+08:00">
-                2017-07-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-23T10:34:47+08:00">
+                2017-07-23
               </time>
             
 
@@ -392,46 +392,13 @@
       
 
       
-        <h2 id="charpter-10-泛型算法"><a href="#charpter-10-泛型算法" class="headerlink" title="charpter 10 泛型算法"></a>charpter 10 泛型算法</h2><ul>
-<li>大多数算法定义在头文件algorithm中</li>
-<li>find函数<blockquote>
-<p>find(begin,end,val) 返回值 指向第一个等于给定值的元素的迭代器。返回end表示没有找到  </p>
-</blockquote>
-</li>
-<li>find_if函数<blockquote>
-<p>它和find算法很类似返回的是找到元素的佚代器。它的第三个参数是一个函数指针(function pointer)或函数对象(object functional)如果是函数对象。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="只读算法"><a href="#只读算法" class="headerlink" title="只读算法"></a>只读算法</h3><ul>
-<li>accumulate(begin,end,初值)表示从范围内求和  ！注意初值必须和类型严格一致</li>
-<li>equal(r1.begin(),r1.end(),r2.begin()) 比较两对于序列是否相等<h3 id="写容器元素算法"><a href="#写容器元素算法" class="headerlink" title="写容器元素算法"></a>写容器元素算法</h3></li>
-<li>fill(begin,end,val),范围内置成val值</li>
-<li>fill_n (dest,n,val)，从dest开始n个置成val值。不能超过范围</li>
-<li>copy(1.begin,1.end,2.begin)</li>
-<li>replace(begin(),end(),old,new)<h3 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h3></li>
-<li>排序 sort(begin,end)</li>
-<li>unique(begin,end)将重复项放置尾部，返回值为指向不重复元素之后的一个</li>
-<li>stable_sort 稳定排序算法维持相等元素的原有顺序</li>
-<li>sort可添加函数，即（begin，end，fun）<h3 id="参数绑定"><a href="#参数绑定" class="headerlink" title="参数绑定"></a>参数绑定</h3>头文件：functional  以及声明 <code>using namespace std::placeholders</code>  </li>
-<li>bind函数：接受一个可调用对象，生成一个新的可调用对象来适应原对象的参数列表  </li>
-<li>形式 <code>auto newCallable = bind(callable,arg_list)</code>,当调用newCallble时，会调用callable，并传递给它arg_list中的参数。其中可能会包含形如<code>_n</code>的名字,表示参数的位置<blockquote>
-<p>举例 auto check_size6 = bind(check_size,_1,6);<br>这边checksize(const &amp;s,size_type:size),而check_size6(s),对应于_1这个占位参数，6为默认参数<br> auto check_size6 = bind(check_size,_1,_2); check_size6(s,6);<br> 如果参数需要引用，则必须使用ref 比如bind(check_size,_1,ref(sz));</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="其他迭代器"><a href="#其他迭代器" class="headerlink" title="其他迭代器"></a>其他迭代器</h3><h4 id="插入迭代器"><a href="#插入迭代器" class="headerlink" title="插入迭代器"></a>插入迭代器</h4><p>实现向给定容器添加元素</p>
+        <h2 id="charpter-11-关联容器"><a href="#charpter-11-关联容器" class="headerlink" title="charpter 11 关联容器"></a>charpter 11 关联容器</h2><p>顺序容器中的元素是按在容器中的位置来顺序保存和访问的。而关联容器中的元素是按<strong> 关键字 </strong>来保存和访问的。</p>
 <ul>
-<li>back_inserter,front_inserter,inserter</li>
-<li>inserter(c,iter),返回值为iter位置前元素的位置 <blockquote>
-<p>it=inserter(c,iter); *it=val;<br>等价于: iter=c.insert(iter,val);++iter；</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="iosream-迭代"><a href="#iosream-迭代" class="headerlink" title="iosream 迭代"></a>iosream 迭代</h4><h4 id="反向迭代器"><a href="#反向迭代器" class="headerlink" title="反向迭代器"></a>反向迭代器</h4><p>除forward_list之外，其他容器都支持反向迭代器。rbegin(),rend();</p>
-<ul>
-<li>反向迭代器转换为普通迭代器 rdiedai.base();</li>
-<li><code>[line.rbegin(),rcomma) ==[rcomma.base(),line.end)</code></li>
+<li>标准库提供8种关联容器。允许重复关键字的容器的名字中都有multi。不保持关键字顺序存储的容器的名字都已unordered开头   </li>
+<li>map,set,multimap,multiset,unordered_map,unordered_set,unordered_multimap,unordered_multiset  </li>
+<li>map关联数组，与正常数组类似，不同之处在于其下标不必是整数，通过关键字来查找值而不是位置  </li>
+<li>map的简单使用<code>map&lt;关键字类型，值类型&gt; 变量名</code>，<code>map使用first保存关键字和second保存数值</code>       </li>
+<li>set计时关键字的简单集合，当只想知道一个值是否存在，set是最有用的。</li>
 </ul>
 
       
@@ -475,18 +442,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/23/C-primer-学习笔记（九）/" rel="next" title="C++ primer 学习笔记（九）">
-                <i class="fa fa-chevron-left"></i> C++ primer 学习笔记（九）
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/15/C-primer-学习笔记（七）/" rel="prev" title="C++ primer 学习笔记（七）">
-                C++ primer 学习笔记（七） <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/18/C-primer-学习笔记（八）/" rel="prev" title="C++ primer 学习笔记（八）">
+                C++ primer 学习笔记（八） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -650,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#charpter-10-泛型算法"><span class="nav-number">1.</span> <span class="nav-text">charpter 10 泛型算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#只读算法"><span class="nav-number">1.1.</span> <span class="nav-text">只读算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写容器元素算法"><span class="nav-number">1.2.</span> <span class="nav-text">写容器元素算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元素操作"><span class="nav-number">1.3.</span> <span class="nav-text">元素操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数绑定"><span class="nav-number">1.4.</span> <span class="nav-text">参数绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他迭代器"><span class="nav-number">1.5.</span> <span class="nav-text">其他迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插入迭代器"><span class="nav-number">1.5.1.</span> <span class="nav-text">插入迭代器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iosream-迭代"><span class="nav-number">1.5.2.</span> <span class="nav-text">iosream 迭代</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反向迭代器"><span class="nav-number">1.5.3.</span> <span class="nav-text">反向迭代器</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#charpter-11-关联容器"><span class="nav-number">1.</span> <span class="nav-text">charpter 11 关联容器</span></a></li></ol></div>
             
 
           </div>
